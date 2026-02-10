@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Обучатор</title>
+    <link rel="stylesheet" href="course_page.css" />
+    <svg style="display: none">
+      <symbol id="profile-icon" viewBox="0 0 24 24">
+        <path
+          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+        />
+      </symbol>
+      <symbol id="time-icon" viewBox="0 0 24 24">
+        <path
+          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+        />
+      </symbol>
+      <symbol id="difficulty-icon" viewBox="0 0 24 24">
+        <path d="M12 2L2 22h20L12 2zm0 3l7 14H5l7-14z" />
+      </symbol>
+      <symbol id="prev-icon" viewBox="0 0 24 24">
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+      </symbol>
+      <symbol id="next-icon" viewBox="0 0 24 24">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+      </symbol>
+    </svg>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <!-- Логотип слева -->
+        <div class="logo">
+          <h1>Обучатор</h1>
+        </div>
+
+        <!-- Поиск по центру -->
+        <div class="center-search">
+          <input
+            type="text"
+            class="search-center-input"
+            placeholder="Поиск по сайту..."
+            aria-label="Поиск"
+          />
+          <button class="search-center-button" type="button" aria-label="Найти">
+            <svg
+              class="search-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+            >
+              <path
+                fill="currentColor"
+                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="header-right">
+          <div class="profile-menu">
+            <button
+              class="profile-button"
+              aria-label="Профиль пользователя"
+              onclick="location.href='profile_page.html'"
+            >
+              <p>Профиль</p>
+              <svg
+                class="profile-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="site-container">
+      <!-- Левая панель -->
+      <aside class="left-panel">
+        <div class="panel-title">Мой прогресс</div>
+        <p>progress...</p>
+        <div class="back-to-courses">
+          <a href="main_page.html" class="back-btn"> Вернуться к курсам </a>
+        </div>
+      </aside>
+
+      <!-- Правая часть  -->
+      <main class="right-content">
+        <div class="course-content">
+          <div class="course-header">
+            <h2>Основы веб-разработки: Урок 9</h2>
+            <p>Создание адаптивного дизайна с CSS Grid и Flexbox</p>
+            <div class="course-meta">
+              <div class="course-meta-item">
+                <svg width="16" height="16" fill="#666">
+                  <use xlink:href="#time-icon"></use>
+                </svg>
+                <span>Время изучения: 45 минут</span>
+              </div>
+            </div>
+          </div>
+
+          <article class="article-content">
+            <div class="article-section">
+              <h3>Введение в адаптивный дизайн</h3>
+              <p>
+                Адаптивный веб-дизайн — это подход к разработке веб-сайтов,
+                который обеспечивает оптимальное отображение на различных
+                устройствах и размерах экранов. Сегодня мы изучим две мощные
+                технологии CSS: Grid и Flexbox.
+              </p>
+
+              <div class="info-box">
+                <strong>Важно:</strong> Адаптивный дизайн стал стандартом с
+                ростом использования мобильных устройств. Google учитывает
+                адаптивность при ранжировании сайтов.
+              </div>
+            </div>
+
+            <div class="article-section">
+              <h3>CSS Grid Layout</h3>
+              <p>
+                CSS Grid — это двумерная система разметки, которая позволяет
+                создавать сложные макеты с строками и столбцами. Рассмотрим
+                базовый пример:
+              </p>
+
+              <div class="code-block">
+                <code>
+                  <span class="code-comment"
+                    >/* Создание grid-контейнера */</span
+                  ><br />
+                  .container {<br />
+                  &nbsp;&nbsp;display: grid;<br />
+                  &nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br />
+                  &nbsp;&nbsp;grid-gap: 20px;<br />
+                  }<br /><br />
+
+                  <span class="code-comment"
+                    >/* Адаптивность для мобильных */</span
+                  ><br />
+                  @media (max-width: 768px) {<br />
+                  &nbsp;&nbsp;.container {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br />
+                  &nbsp;&nbsp;}<br />
+                  }
+                </code>
+              </div>
+            </div>
+
+            <div class="article-section">
+              <h3>CSS Flexbox</h3>
+              <p>
+                Flexbox — это одномерная модель разметки, которая позволяет
+                распределять пространство между элементами в контейнере.
+                Идеально подходит для компонентов интерфейса:
+              </p>
+
+              <div class="code-block">
+                <code>
+                  <span class="code-comment">/* Flexbox навигация */</span
+                  ><br />
+                  .navbar {<br />
+                  &nbsp;&nbsp;display: flex;<br />
+                  &nbsp;&nbsp;justify-content: space-between;<br />
+                  &nbsp;&nbsp;align-items: center;<br />
+                  &nbsp;&nbsp;flex-wrap: wrap;<br />
+                  }<br /><br />
+
+                  .nav-item {<br />
+                  &nbsp;&nbsp;flex: 1;<br />
+                  &nbsp;&nbsp;min-width: 100px;<br />
+                  &nbsp;&nbsp;text-align: center;<br />
+                  }
+                </code>
+              </div>
+            </div>
+
+            <div class="article-section">
+              <h3>Комбинирование Grid и Flexbox</h3>
+              <p>
+                Для создания сложных адаптивных макетов часто используется
+                комбинация Grid для общей структуры страницы и Flexbox для
+                отдельных компонентов.
+              </p>
+              <p><strong>Преимущества такого подхода:</strong></p>
+              <p>1. Grid идеально подходит для макета всей страницы</p>
+              <p>
+                2. Flexbox отлично справляется с выравниванием элементов внутри
+                ячеек
+              </p>
+              <p>3. Упрощается создание адаптивных интерфейсов</p>
+            </div>
+          </article>
+
+          <div class="article-navigation">
+            <button class="nav-btn prev">
+              <svg width="20" height="20" fill="white">
+                <use xlink:href="#prev-icon"></use>
+              </svg>
+              Предыдущий урок
+            </button>
+            <button class="nav-btn next">
+              Следующий урок
+              <svg width="20" height="20" fill="white">
+                <use xlink:href="#next-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+      <p>© ИТС</p>
+    </footer>
+  </body>
+  <script src="course.js"></script>
+</html>
