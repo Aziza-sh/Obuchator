@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Обучатор</title>
     <link rel="stylesheet" href="main_page.css" />
+    <script src="main.js"></script>
   </head>
   <body>
     <header>
@@ -264,8 +265,133 @@
 
           <!-- Словарик -->
           <section id="languages" class="content-section">
-            <h2>Словарик</h2>
-            <p>Выберите раздел</p>
+            <h2 class="dictionary-title">Словарик</h2>
+            <p class="dictionary-subtitle">Выберите раздел для изучения</p>
+
+            <div class="dictionary-container">
+              <div class="subject-card" onclick="location.href='math.html'">
+                <div class="subject-icon">∫</div>
+                <h3 class="subject-name">Математика</h3>
+                <p class="subject-desc">Формулы, теоремы, понятия</p>
+                <div class="subject-stats">
+                  <span class="stat">120 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='russian.html'">
+                <div class="subject-icon">А</div>
+                <h3 class="subject-name">Русский язык</h3>
+                <p class="subject-desc">Правила, орфография, пунктуация</p>
+                <div class="subject-stats">
+                  <span class="stat">95 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='physics.html'">
+                <div class="subject-icon">⚛</div>
+                <h3 class="subject-name">Физика</h3>
+                <p class="subject-desc">Законы, формулы, явления</p>
+                <div class="subject-stats">
+                  <span class="stat">150 терминов</span>
+                </div>
+              </div>
+
+              <div
+                class="subject-card"
+                onclick="location.href='chemistry.html'"
+              >
+                <div class="subject-icon">🧪</div>
+                <h3 class="subject-name">Химия</h3>
+                <p class="subject-desc">Элементы, реакции, соединения</p>
+                <div class="subject-stats">
+                  <span class="stat">110 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='biology.html'">
+                <div class="subject-icon">🧬</div>
+                <h3 class="subject-name">Биология</h3>
+                <p class="subject-desc">Организмы, процессы, классификация</p>
+                <div class="subject-stats">
+                  <span class="stat">180 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='history.html'">
+                <div class="subject-icon">🏛</div>
+                <h3 class="subject-name">История</h3>
+                <p class="subject-desc">Даты, события, личности</p>
+                <div class="subject-stats">
+                  <span class="stat">200 терминов</span>
+                </div>
+              </div>
+
+              <div
+                class="subject-card"
+                onclick="location.href='geography.html'"
+              >
+                <div class="subject-icon">🌍</div>
+                <h3 class="subject-name">География</h3>
+                <p class="subject-desc">Страны, столицы, рельеф</p>
+                <div class="subject-stats">
+                  <span class="stat">140 терминов</span>
+                </div>
+              </div>
+
+              <div
+                class="subject-card"
+                onclick="location.href='literature.html'"
+              >
+                <div class="subject-icon">📖</div>
+                <h3 class="subject-name">Литература</h3>
+                <p class="subject-desc">Авторы, произведения, жанры</p>
+                <div class="subject-stats">
+                  <span class="stat">130 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='english.html'">
+                <div class="subject-icon">💂🏻‍</div>
+                <h3 class="subject-name">Английский язык</h3>
+                <p class="subject-desc">Слова, правила, идиомы</p>
+                <div class="subject-stats">
+                  <span class="stat">300 терминов</span>
+                </div>
+              </div>
+
+              <div
+                class="subject-card"
+                onclick="location.href='informatics.html'"
+              >
+                <div class="subject-icon">💻</div>
+                <h3 class="subject-name">Информатика</h3>
+                <p class="subject-desc">Алгоритмы, языки, технологии</p>
+                <div class="subject-stats">
+                  <span class="stat">160 терминов</span>
+                </div>
+              </div>
+
+              <div class="subject-card" onclick="location.href='art.html'">
+                <div class="subject-icon">🎨</div>
+                <h3 class="subject-name">Искусство</h3>
+                <p class="subject-desc">Художники, стили, техники</p>
+                <div class="subject-stats">
+                  <span class="stat">90 терминов</span>
+                </div>
+              </div>
+
+              <div
+                class="subject-card"
+                onclick="location.href='economics.html'"
+              >
+                <div class="subject-icon">💰</div>
+                <h3 class="subject-name">Экономика</h3>
+                <p class="subject-desc">Термины, понятия, законы</p>
+                <div class="subject-stats">
+                  <span class="stat">120 терминов</span>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- Новости -->
@@ -282,5 +408,4 @@
       <p>© ИТС</p>
     </footer>
   </body>
-  <script src="main.js"></script>
 </html>
