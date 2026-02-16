@@ -1,72 +1,85 @@
-// Функция для переключения аккордеона
-function toggleAccordion(sectionId) {
-  const container = document.getElementById(sectionId);
-  const header = container.previousElementSibling;
-  const icon = header.querySelector(".toggle-icon");
+document.addEventListener('DOMContentLoaded', function() {
+  // ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ =====
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
 
-  // Сохраняем позицию скролла
-  const scrollPosition =
-    window.pageYOffset || document.documentElement.scrollTop;
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem('site-theme') || 'light';
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+      themeToggle.textContent = '☀️';
+    }
 
-  // Переключаем классы
-  container.classList.toggle("hidden");
-  header.classList.toggle("collapsed");
-
-  // Меняем иконку
-  if (container.classList.contains("hidden")) {
-    icon.textContent = "▶";
-  } else {
-    icon.textContent = "▼";
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-theme');
+      const isDark = body.classList.contains('dark-theme');
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
+    });
   }
 
-  // Восстанавливаем позицию скролла
-  setTimeout(() => {
-    window.scrollTo(0, scrollPosition);
-  }, 10);
-}
+  // ===== ФУНКЦИЯ АККОРДЕОНА =====
+  function toggleAccordion(sectionId) {
+    const container = document.getElementById(sectionId);
+    if (!container) return;
+    const header = container.previousElementSibling;
+    const icon = header.querySelector(".toggle-icon");
 
-// Функция для переключения вкладок
-function setupTabNavigation() {
-  const menuButtons = document.querySelectorAll(".menu-btn");
-  const contentSections = document.querySelectorAll(".content-section");
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (menuButtons.length === 0 || contentSections.length === 0) {
-    console.error("Не найдены элементы для переключения вкладок");
-    return;
+    container.classList.toggle("hidden");
+    header.classList.toggle("collapsed");
+
+    icon.textContent = container.classList.contains("hidden") ? "▶" : "▼";
+
+    setTimeout(() => {
+      window.scrollTo(0, scrollPosition);
+    }, 10);
   }
 
-  menuButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      // Убираем активный класс у всех кнопок
-      menuButtons.forEach((btn) => btn.classList.remove("active"));
-      this.classList.add("active");
-
-      // Скрываем все разделы
-      contentSections.forEach((section) => {
-        section.classList.remove("active");
-      });
-
-      // Показываем выбранный раздел
-      const tabId = this.getAttribute("data-tab");
-      const targetSection = document.getElementById(tabId);
-
-      if (targetSection) {
-        targetSection.classList.add("active");
-      } else {
-        console.error('Раздел с id "' + tabId + '" не найден');
+  // ===== ОБРАБОТЧИКИ ДЛЯ АККОРДЕОНОВ =====
+  document.querySelectorAll('.courses-header, .accordion-header').forEach(header => {
+    header.addEventListener('click', function() {
+      const container = this.nextElementSibling;
+      if (container && container.id) {
+        toggleAccordion(container.id);
       }
     });
   });
-}
 
-// Инициализация при загрузке страницы
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("Документ загружен, инициализация...");
+  // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
+  function setupTabNavigation() {
+    const menuButtons = document.querySelectorAll(".menu-btn");
+    const contentSections = document.querySelectorAll(".content-section");
 
-  // Настройка переключения вкладок
+    if (menuButtons.length === 0 || contentSections.length === 0) {
+      console.error("Не найдены элементы для переключения вкладок");
+      return;
+    }
+
+    menuButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        menuButtons.forEach((btn) => btn.classList.remove("active"));
+        this.classList.add("active");
+
+        contentSections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        const tabId = this.getAttribute("data-tab");
+        const targetSection = document.getElementById(tabId);
+        if (targetSection) {
+          targetSection.classList.add("active");
+        } else {
+          console.error('Раздел с id "' + tabId + '" не найден');
+        }
+      });
+    });
+  }
+
   setupTabNavigation();
 
-  // Если хотите, чтобы аккордеоны были свернуты по умолчанию, раскомментируйте:
+  // Если нужно, чтобы аккордеоны были свёрнуты по умолчанию:
   // toggleAccordion('newCourses');
   // toggleAccordion('completedCourses');
 });

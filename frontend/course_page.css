@@ -5,11 +5,21 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif;
 }
+
+@font-face {
+  font-family: 'Buyan';
+  src: url('Buyan/BuyanRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+}
+
 header {
   background: #1cecd4;
   color: #fff;
@@ -32,10 +42,7 @@ footer {
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
 }
 .logo {
   flex: 0 0 auto;
@@ -57,10 +64,7 @@ footer {
 .search-center-input {
   width: 100%;
   padding: 9px 40px 9px 15px;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 14px;
   border: 2px solid hsla(0, 0%, 100%, 0.3);
   border-radius: 20px;
@@ -112,10 +116,7 @@ footer {
   align-items: center;
 }
 .profile-button {
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 14px;
   background: none;
   border: none;
@@ -335,10 +336,7 @@ footer {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 11px;
   font-weight: 600;
   transition: all 0.2s ease;
@@ -423,28 +421,23 @@ footer {
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   padding: 15px;
-  margin: 15px 0;
-  font-family:
-    Courier New,
-    monospace;
+  margin: 15px 0; 
   font-size: 14px;
   overflow-x: auto;
+  font-family: 'Buyan', sans-serif;
 }
 .code-comment {
+  font-family: 'Buyan', sans-serif; 
   color: #6a9955;
 }
-.code-keyword {
-  color: #569cd6;
-}
-.code-string {
-  color: #ce9178;
-}
+
 .info-box {
   background: #e3f2fd;
   border-left: 4px solid #2196f3;
   padding: 15px;
   margin: 20px 0;
   border-radius: 0 5px 5px 0;
+  font-family: 'Buyan', sans-serif; 
 }
 .info-box strong {
   color: #1565c0;
@@ -474,10 +467,7 @@ footer {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -494,10 +484,7 @@ footer {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -521,10 +508,7 @@ footer {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-family:
-    Courier New,
-    Courier,
-    monospace;
+  font-family: 'Buyan', sans-serif; 
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
