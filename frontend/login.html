@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="registr_login.css" />
-    <title>Регистрация | Обучатор</title>
+    <script src="reg_log.js"></script>
+    <title>Вход | Обучатор</title>
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="logo">
-          <h1>Обучатор</h1>
+          <h1>Obuchator</h1>
         </div>
 
         <!-- Поиск -->
@@ -36,7 +37,13 @@
             </svg>
           </button>
         </div>
-
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Переключить тему"
+        >
+          🌙
+        </button>
         <!-- Иконкка профиля -->
         <div class="header-right">
           <div class="profile-menu">
@@ -63,7 +70,6 @@
         </div>
       </div>
     </header>
-
     <div class="auth-container">
       <div class="auth-card">
         <h2 class="auth-title">Вход</h2>

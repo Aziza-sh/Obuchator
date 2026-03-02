@@ -1,4 +1,3 @@
-
 :root {
   --bg-body: #f4f4f4;
   --text-primary: #333;
@@ -12,9 +11,9 @@
   --accent: #1cecd4;
   --accent-hover: #15d4bc;
   --accent-light: rgba(28, 236, 212, 0.1);
-  --gradient-start:  #0ad1df;
+  --gradient-start: #0ad1df;
   --gradient-end: #45ffec;
-  --card-bg:  #21b7b527;
+  --card-bg: #21b7b527;
   --card-border: #39e0e6;
   --card-shadow: rgba(13, 215, 191, 0.499);
   --card-shadow-hover: rgba(28, 236, 212, 0.25);
@@ -108,92 +107,92 @@
   --footer-text: #ffffff;
   --panel-bg: #2d2d2d;
   --panel-border: #404040;
-  --accent: #1cecd4;                      
-  --accent-hover: #15d4bc;             
-  --accent-light: rgba(28, 236, 212, 0.2); 
+  --accent: #1cecd4;
+  --accent-hover: #15d4bc;
+  --accent-light: rgba(28, 236, 212, 0.2);
   --gradient-start: #1cecd4;
-  --gradient-end: #089b92;                  
+  --gradient-end: #089b92;
   --card-bg: linear-gradient(135deg, #2d2d2d, #1e1e1e);
-  --card-border: #1cecd4;                   
-  --card-shadow: rgba(28, 236, 212, 0.15);  
-  --card-shadow-hover: rgba(28, 236, 212, 0.25); 
+  --card-border: #1cecd4;
+  --card-shadow: rgba(28, 236, 212, 0.15);
+  --card-shadow-hover: rgba(28, 236, 212, 0.25);
   --menu-btn-bg: #3d3d3d;
   --menu-btn-hover: #4d4d4d;
   --menu-btn-text: #e0e0e0;
   --menu-btn-active-text: #ffffff;
   --divider: linear-gradient(90deg, transparent, #555, transparent);
   --scrollbar-track: #2d2d2d;
-  --scrollbar-thumb: linear-gradient(180deg, #1cecd4, #089b92); 
-  --scrollbar-thumb-hover: linear-gradient(180deg, #15d4bc, #0ab5ab); 
-  --languages-text: #1cecd4;               
+  --scrollbar-thumb: linear-gradient(180deg, #1cecd4, #089b92);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #15d4bc, #0ab5ab);
+  --languages-text: #1cecd4;
   --reviews-text: #b0b0b0;
   --accordion-bg: #2d2d2d;
   --accordion-border: #404040;
   --accordion-hover: #3d3d3d;
   --profile-header-bg: #2d2d2d;
   --profile-header-shadow: rgba(0, 0, 0, 0.3);
-  --avatar-border: #1cecd4;                 
+  --avatar-border: #1cecd4;
   --profile-name: #e0e0e0;
-  --profile-role: #1cecd4;                    
-  --stat-value: #1cecd4;                    
+  --profile-role: #1cecd4;
+  --stat-value: #1cecd4;
   --stat-label: #b0b0b0;
   --section-card-bg: #2d2d2d;
-  --section-title-border: #1cecd4;            
+  --section-title-border: #1cecd4;
   --info-label: #b0b0b0;
   --info-value: #e0e0e0;
-  --edit-btn-bg: linear-gradient(90deg, #1cecd4, #15d4bc); 
-  --edit-btn-hover: linear-gradient(90deg, #15d4bc, #0ab5ab); 
+  --edit-btn-bg: linear-gradient(90deg, #1cecd4, #15d4bc);
+  --edit-btn-hover: linear-gradient(90deg, #15d4bc, #0ab5ab);
   --progress-bar-bg: #3d3d3d;
-  --progress-fill: linear-gradient(90deg, #1cecd4, #0ab5ab); 
+  --progress-fill: linear-gradient(90deg, #1cecd4, #0ab5ab);
   --achievement-icon-bg: linear-gradient(135deg, #3d3d3d, #2d2d2d);
-  --achievement-border: #1cecd4;              
+  --achievement-border: #1cecd4;
   --achievement-name: #b0b0b0;
   --back-btn-bg: #3d3d3d;
   --back-btn-text: #e0e0e0;
   --back-btn-border: #555;
-  --back-btn-hover-bg: #1cecd4;                
+  --back-btn-hover-bg: #1cecd4;
   --back-btn-hover-text: #121212;
   --settings-border: #404040;
   --settings-label: #e0e0e0;
   --toggle-bg: #555;
-  --toggle-checked: #1cecd4;                   
-  --dictionary-title: #1cecd4;                 
-  --dictionary-subtitle: #15d4bc;              
+  --toggle-checked: #1cecd4;
+  --dictionary-title: #1cecd4;
+  --dictionary-subtitle: #15d4bc;
   --subject-card-bg: linear-gradient(135deg, #2d2d2d, #1e1e1e);
-  --subject-card-shadow: rgba(28, 236, 212, 0.15);  
-  --subject-card-shadow-hover: rgba(28, 236, 212, 0.25); 
+  --subject-card-shadow: rgba(28, 236, 212, 0.15);
+  --subject-card-shadow-hover: rgba(28, 236, 212, 0.25);
   --subject-icon-bg: linear-gradient(135deg, #3d3d3d, #2d2d2d);
-  --subject-name: #1cecd4;                     
+  --subject-name: #1cecd4;
   --subject-desc: #b0b0b0;
-  --subject-stats-color: #1cecd4;                
-  --subject-stats-bg: rgba(28, 236, 212, 0.2);  
-  --news-title: #1cecd4;                        
-  --news-border: #1cecd4;                     
+  --subject-stats-color: #1cecd4;
+  --subject-stats-bg: rgba(28, 236, 212, 0.2);
+  --news-title: #1cecd4;
+  --news-border: #1cecd4;
   --news-subtitle: #b0b0b0;
   --news-card-bg: #2d2d2d;
   --news-card-shadow: rgba(0, 0, 0, 0.3);
   --news-card-shadow-hover: rgba(0, 0, 0, 0.5);
   --news-header-bg: linear-gradient(90deg, #2d2d2d, #1e1e1e);
-  --news-category-important: linear-gradient(90deg, #cf6679, #b0003a); 
-  --news-category-event: linear-gradient(90deg, #03dac6, #018786);    
-  --news-category-update: linear-gradient(90deg, #1cecd4, #089b92);   
-  --news-category-study: linear-gradient(90deg, #03dac6, #018786);    
-  --news-category-success: linear-gradient(90deg, #4caf50, #2e7d32);  
-  --news-category-help: linear-gradient(90deg, #1cecd4, #0ab5ab);     
+  --news-category-important: linear-gradient(90deg, #cf6679, #b0003a);
+  --news-category-event: linear-gradient(90deg, #03dac6, #018786);
+  --news-category-update: linear-gradient(90deg, #1cecd4, #089b92);
+  --news-category-study: linear-gradient(90deg, #03dac6, #018786);
+  --news-category-success: linear-gradient(90deg, #4caf50, #2e7d32);
+  --news-category-help: linear-gradient(90deg, #1cecd4, #0ab5ab);
   --news-date: #b0b0b0;
-  --news-headline: #1cecd4;                      
+  --news-headline: #1cecd4;
   --news-text: #b0b0b0;
-  --news-tag-bg: rgba(28, 236, 212, 0.2);         
-  --news-tag-color: #1cecd4;                     
+  --news-tag-bg: rgba(28, 236, 212, 0.2);
+  --news-tag-color: #1cecd4;
   --news-footer-bg: #1e1e1e;
   --news-footer-border: #404040;
   --author-avatar-bg: linear-gradient(135deg, #3d3d3d, #2d2d2d);
   --author-name: #b0b0b0;
-  --news-button-bg: linear-gradient(90deg, #1cecd4, #15d4bc);   
-  --news-button-hover: linear-gradient(90deg, #15d4bc, #0ab5ab); 
-  --load-more-bg: linear-gradient(90deg, #1cecd4, #15d4bc);     
-  --load-more-hover: linear-gradient(90deg, #15d4bc, #0ab5ab);  
-  --news-card-before: linear-gradient(180deg, #1cecd4, #0ab5ab); 
+  --news-button-bg: linear-gradient(90deg, #1cecd4, #15d4bc);
+  --news-button-hover: linear-gradient(90deg, #15d4bc, #0ab5ab);
+  --load-more-bg: linear-gradient(90deg, #1cecd4, #15d4bc);
+  --load-more-hover: linear-gradient(90deg, #15d4bc, #0ab5ab);
+  --news-card-before: linear-gradient(180deg, #1cecd4, #0ab5ab);
   --border-light: #404040;
 }
 
@@ -204,21 +203,25 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
   color: var(--text-primary);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 @font-face {
-  font-family: 'Buyan';
-  src: url('Buyan/BuyanRegular.ttf') format('truetype');
+  font-family: "Buyan";
+  src: url("Buyan/BuyanRegular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
 }
 
@@ -228,7 +231,9 @@ header {
   padding: 10px 0;
   text-align: left;
   padding-left: 10px;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 footer {
@@ -237,7 +242,9 @@ footer {
   text-align: center;
   padding: 10px 0;
   width: 100%;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 
 .header-container {
@@ -332,7 +339,7 @@ footer {
 }
 
 .profile-button {
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
   font-size: 14px;
   background: none;
   border: none;
@@ -367,7 +374,9 @@ footer {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background: var(--panel-bg);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
 }
 
 .left-panel {
@@ -375,7 +384,9 @@ footer {
   background: var(--panel-bg);
   padding: 25px;
   border-right: 2px solid var(--panel-border);
-  transition: background 0.3s, border-color 0.3s;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
 }
 
 .panel-title {
@@ -384,7 +395,9 @@ footer {
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 2px solid var(--accent);
-  transition: color 0.3s, border-color 0.3s;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
 }
 
 .menu-buttons {
@@ -489,7 +502,7 @@ footer {
   flex: 0 0 auto;
   position: relative;
   overflow: hidden;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
 }
 
 .g-block:hover {
@@ -522,7 +535,11 @@ footer {
   padding: 10px 15px;
   border: none;
   border-radius: 6px;
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  background: linear-gradient(
+    90deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
   color: #fff;
   cursor: pointer;
   font-size: 13px;
@@ -530,11 +547,15 @@ footer {
   transition: all 0.3s ease;
   box-shadow: 0 3px 6px var(--card-shadow);
   width: 100%;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
 }
 
 .button-z:hover {
-  background: linear-gradient(90deg, var(--gradient-end), var(--gradient-start));
+  background: linear-gradient(
+    90deg,
+    var(--gradient-end),
+    var(--gradient-start)
+  );
   transform: translateY(-2px);
   box-shadow: 0 5px 10px var(--card-shadow-hover);
 }
@@ -696,7 +717,9 @@ footer {
 .courses-container,
 .accordion-content {
   overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
+  transition:
+    max-height 0.5s ease,
+    opacity 0.3s ease;
   max-height: 2000px;
   opacity: 1;
 }
@@ -724,7 +747,9 @@ footer {
   background: var(--profile-header-bg);
   border-radius: 15px;
   box-shadow: 0 4px 20px var(--profile-header-shadow);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
 }
 
 .avatar-container {
@@ -819,7 +844,9 @@ footer {
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 4px 15px var(--profile-header-shadow);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
 }
 
 .section-title {
@@ -828,7 +855,9 @@ footer {
   margin: 0 0 20px;
   padding-bottom: 15px;
   border-bottom: 2px solid var(--section-title-border);
-  transition: color 0.3s, border-color 0.3s;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
 }
 
 .info-grid {
@@ -927,7 +956,10 @@ footer {
   border: 2px solid var(--achievement-border);
   font-size: 24px;
   color: var(--accent);
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    color 0.3s;
 }
 
 .achievement-name {
@@ -943,7 +975,7 @@ footer {
   border-radius: 10px;
   padding: 12px 25px;
   cursor: pointer;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
   font-size: 16px;
   margin-top: 30px;
   transition: all 0.3s ease;
@@ -1264,7 +1296,7 @@ input:checked + .toggle-slider:before {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background: var(--news-category-important); 
+  background: var(--news-category-important);
 }
 
 .news-category.category-important {
@@ -1375,7 +1407,7 @@ input:checked + .toggle-slider:before {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
@@ -1404,7 +1436,7 @@ input:checked + .toggle-slider:before {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: 'Buyan', sans-serif;
+  font-family: "Buyan", sans-serif;
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
