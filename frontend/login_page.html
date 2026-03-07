@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="registr_login.css" />
-    <script src="reg_log.js"></script>
+    <link rel="stylesheet" href="/registr_login.css" />
     <title>Вход | Обучатор</title>
   </head>
   <body>
@@ -76,7 +75,6 @@
 
         <form
           id="registerForm"
-          onsubmit="event.preventDefault(); alert('Регистрация (демо-режим)');"
         >
           <!-- Поле Email -->
           <div class="form-group">
@@ -106,12 +104,12 @@
           </div>
 
           <!-- Кнопка регистрации -->
-          <button type="submit" class="auth-button">Зарегистрироваться</button>
+          <button type="submit" class="auth-button">Войти</button>
         </form>
 
         <div class="login-link">
           Ещё нет аккаунта?
-          <a href="registration_page.html">Зарегистрируйтесь</a>
+          <a href="/static/registration_page.html">Зарегистрируйтесь</a>
         </div>
       </div>
     </div>
@@ -121,4 +119,6 @@
       <p>© ИТС</p>
     </footer>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/static/reg_log.js"></script>
 </html>

@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Обучатор</title>
     <link rel="stylesheet" href="main_page.css" />
-    <script src="main.js"></script>
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="logo">
-          <h1>Obuchator</h1>
+          <h1>Курсор</h1>
         </div>
 
         <!-- Поиск -->
@@ -44,7 +43,7 @@
         >
           🌙
         </button>
-        <!-- Иконкка профиля -->
+        <!-- Иконка профиля -->
         <div class="header-right">
           <div class="profile-menu">
             <button
@@ -94,16 +93,96 @@
         <div class="right-content">
           <!-- Секция Курсов -->
           <section id="courses" class="content-section active">
+            <!-- Мои курсы -->
+            <div class="accordion-section">
+              <div class="accordion-header" id="header-myCourses">
+                <div class="header-left">
+                  <h2>Мои курсы</h2>
+                  <div class="header-actions">
+                    <button class="action-btn manage-btn" id="manageCoursesBtn">
+                      Управлять
+                    </button>
+                    <button class="action-btn create-btn" id="createCourseBtn">
+                      Создать
+                    </button>
+                  </div>
+                </div>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div id="myCourses" class="accordion-content">
+                <div class="container">
+                  <div class="g-block">
+                    <img
+                      src="https://img.freepik.com/premium-photo/blue-sky-with-tiny-clouds_87394-4391.jpg?semt=ais_hybrid&w=740"
+                      alt="Курс 01"
+                    />
+                    <h2>Курс 01</h2>
+                    <button
+                      class="button-z"
+                      onclick="location.href='course_page.html'"
+                    >
+                      Выбрать
+                    </button>
+                  </div>
+                  <div class="g-block">
+                    <img
+                      src="https://img.freepik.com/premium-photo/blue-sky-with-tiny-clouds_87394-4391.jpg?semt=ais_hybrid&w=740"
+                      alt="Курс"
+                    />
+                    <h2>Курс</h2>
+                    <button
+                      class="button-z"
+                      onclick="location.href='course_page.html'"
+                    >
+                      Выбрать
+                    </button>
+                  </div>
+                  <div class="g-block">
+                    <img
+                      src="https://img.freepik.com/premium-photo/blue-sky-with-tiny-clouds_87394-4391.jpg?semt=ais_hybrid&w=740"
+                      alt="Курс 1"
+                    />
+                    <h2>Курс 1</h2>
+                    <button
+                      class="button-z"
+                      onclick="location.href='course_page.html'"
+                    >
+                      Выбрать
+                    </button>
+                  </div>
+                  <div class="g-block">
+                    <img
+                      src="https://img.freepik.com/premium-photo/blue-sky-with-tiny-clouds_87394-4391.jpg?semt=ais_hybrid&w=740"
+                      alt="Дополнительный курс 1"
+                    />
+                    <h2>Дополнительный курс 1</h2>
+                    <button
+                      class="button-z"
+                      onclick="location.href='course_page.html'"
+                    >
+                      Выбрать
+                    </button>
+                  </div>
+                  <div class="g-block">
+                    <img
+                      src="https://img.freepik.com/premium-photo/blue-sky-with-tiny-clouds_87394-4391.jpg?semt=ais_hybrid&w=740"
+                      alt="Дополнительный курс 2"
+                    />
+                    <h2>Дополнительный курс 2</h2>
+                    <button class="button-z" onclick="location.href='#'">
+                      Выбрать
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Новые курсы -->
             <div class="accordion-section">
-              <div
-                class="accordion-header"
-                onclick="toggleAccordion('newCourses')"
-              >
+              <div class="accordion-header" id="header-newCourses">
                 <h2>Новые курсы</h2>
-                <span class="toggle-icon" id="toggleIconNew">▼</span>
+                <span class="toggle-icon">▼</span>
               </div>
-
               <div id="newCourses" class="accordion-content">
                 <div class="container">
                   <div class="g-block">
@@ -174,14 +253,10 @@
 
             <!-- Пройденные курсы -->
             <div class="accordion-section">
-              <div
-                class="accordion-header"
-                onclick="toggleAccordion('completedCourses')"
-              >
+              <div class="accordion-header" id="header-completedCourses">
                 <h2>Пройденные курсы</h2>
-                <span class="toggle-icon" id="toggleIconCompleted">▼</span>
+                <span class="toggle-icon">▼</span>
               </div>
-
               <div id="completedCourses" class="accordion-content">
                 <div class="container">
                   <div class="g-block">
@@ -273,6 +348,7 @@
             <p class="dictionary-subtitle">Выберите раздел для изучения</p>
 
             <div class="dictionary-container">
+              <!-- ... все карточки предметов ... (оставьте как у вас) -->
               <div class="subject-card" onclick="location.href='math.html'">
                 <div class="subject-icon">∫</div>
                 <h3 class="subject-name">Математика</h3>
@@ -281,7 +357,6 @@
                   <span class="stat">120 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='russian.html'">
                 <div class="subject-icon">А</div>
                 <h3 class="subject-name">Русский язык</h3>
@@ -290,7 +365,6 @@
                   <span class="stat">95 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='physics.html'">
                 <div class="subject-icon">⚛</div>
                 <h3 class="subject-name">Физика</h3>
@@ -299,7 +373,6 @@
                   <span class="stat">150 терминов</span>
                 </div>
               </div>
-
               <div
                 class="subject-card"
                 onclick="location.href='chemistry.html'"
@@ -311,7 +384,6 @@
                   <span class="stat">110 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='biology.html'">
                 <div class="subject-icon">🧬</div>
                 <h3 class="subject-name">Биология</h3>
@@ -320,7 +392,6 @@
                   <span class="stat">180 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='history.html'">
                 <div class="subject-icon">🏛</div>
                 <h3 class="subject-name">История</h3>
@@ -329,7 +400,6 @@
                   <span class="stat">200 терминов</span>
                 </div>
               </div>
-
               <div
                 class="subject-card"
                 onclick="location.href='geography.html'"
@@ -341,7 +411,6 @@
                   <span class="stat">140 терминов</span>
                 </div>
               </div>
-
               <div
                 class="subject-card"
                 onclick="location.href='literature.html'"
@@ -353,7 +422,6 @@
                   <span class="stat">130 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='english.html'">
                 <div class="subject-icon">💂🏻‍</div>
                 <h3 class="subject-name">Английский язык</h3>
@@ -362,7 +430,6 @@
                   <span class="stat">300 терминов</span>
                 </div>
               </div>
-
               <div
                 class="subject-card"
                 onclick="location.href='informatics.html'"
@@ -374,7 +441,6 @@
                   <span class="stat">160 терминов</span>
                 </div>
               </div>
-
               <div class="subject-card" onclick="location.href='art.html'">
                 <div class="subject-icon">🎨</div>
                 <h3 class="subject-name">Искусство</h3>
@@ -383,7 +449,6 @@
                   <span class="stat">90 терминов</span>
                 </div>
               </div>
-
               <div
                 class="subject-card"
                 onclick="location.href='economics.html'"
@@ -405,6 +470,7 @@
               <p class="news-subtitle">Будьте в курсе последних событий</p>
 
               <div class="news-feed">
+                <!-- ... все новости ... (оставьте как у вас) -->
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">15.01.2026</div>
@@ -419,9 +485,9 @@
                       практические задания и проекты.
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#образование</span>
-                      <span class="news-tag">#новыйкурс</span>
-                      <span class="news-tag">#AI</span>
+                      <span class="news-tag">#образование</span
+                      ><span class="news-tag">#новыйкурс</span
+                      ><span class="news-tag">#AI</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -432,7 +498,6 @@
                     <button class="news-button">Подробнее →</button>
                   </div>
                 </div>
-
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">10.01.2026</div>
@@ -445,9 +510,9 @@
                       января.
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#олимпиада</span>
-                      <span class="news-tag">#программирование</span>
-                      <span class="news-tag">#соревнования</span>
+                      <span class="news-tag">#олимпиада</span
+                      ><span class="news-tag">#программирование</span
+                      ><span class="news-tag">#соревнования</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -458,7 +523,6 @@
                     <button class="news-button">Подробнее →</button>
                   </div>
                 </div>
-
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">05.01.2026</div>
@@ -471,9 +535,9 @@
                       удобнее!
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#обновление</span>
-                      <span class="news-tag">#платформа</span>
-                      <span class="news-tag">#улучшения</span>
+                      <span class="news-tag">#обновление</span
+                      ><span class="news-tag">#платформа</span
+                      ><span class="news-tag">#улучшения</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -484,7 +548,6 @@
                     <button class="news-button">Подробнее →</button>
                   </div>
                 </div>
-
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">28.12.2025</div>
@@ -496,9 +559,9 @@
                       "Веб-разработка с нуля", "Базы данных для начинающих".
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#вебинары</span>
-                      <span class="news-tag">#расписание</span>
-                      <span class="news-tag">#обучение</span>
+                      <span class="news-tag">#вебинары</span
+                      ><span class="news-tag">#расписание</span
+                      ><span class="news-tag">#обучение</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -509,7 +572,6 @@
                     <button class="news-button">Подробнее →</button>
                   </div>
                 </div>
-
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">20.12.2025</div>
@@ -522,9 +584,9 @@
                       победителей!
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#победа</span>
-                      <span class="news-tag">#хакатон</span>
-                      <span class="news-tag">#гордость</span>
+                      <span class="news-tag">#победа</span
+                      ><span class="news-tag">#хакатон</span
+                      ><span class="news-tag">#гордость</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -535,8 +597,6 @@
                     <button class="news-button">Подробнее →</button>
                   </div>
                 </div>
-
-                <!-- Новость 6 -->
                 <div class="news-card">
                   <div class="news-header">
                     <div class="news-date">15.12.2025</div>
@@ -548,9 +608,9 @@
                       у вас возникли проблемы, обращайтесь в любое время.
                     </p>
                     <div class="news-tags">
-                      <span class="news-tag">#поддержка</span>
-                      <span class="news-tag">#помощь</span>
-                      <span class="news-tag">#служба</span>
+                      <span class="news-tag">#поддержка</span
+                      ><span class="news-tag">#помощь</span
+                      ><span class="news-tag">#служба</span>
                     </div>
                   </div>
                   <div class="news-footer">
@@ -576,5 +636,39 @@
     <footer class="main-footer">
       <p>© ИТС</p>
     </footer>
+
+    <!-- Модальное окно создания курса -->
+    <div id="courseModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Создание нового курса</h2>
+        <form id="createCourseForm">
+          <div class="form-group">
+            <label for="courseName">Название курса:</label>
+            <input type="text" id="courseName" name="courseName" required />
+          </div>
+          <div class="form-group">
+            <label for="lessonCount">Количество уроков:</label>
+            <input
+              type="number"
+              id="lessonCount"
+              name="lessonCount"
+              min="1"
+              value="1"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="courseDesc">Описание (необязательно):</label>
+            <textarea id="courseDesc" name="courseDesc" rows="3"></textarea>
+          </div>
+          <button type="submit" class="modal-submit">
+            Создать и перейти к курсу
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

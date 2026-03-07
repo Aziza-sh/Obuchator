@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/registr_login.css" />
-    <title>Регистрация | Обучатор</title>
+    <title>Вход | Обучатор</title>
   </head>
   <body>
     <header>
@@ -43,7 +43,7 @@
         >
           🌙
         </button>
-        <!-- Иконкка профиля -->
+        <!-- Иконка профиля -->
         <div class="header-right">
           <div class="profile-menu">
             <button
@@ -69,14 +69,12 @@
         </div>
       </div>
     </header>
-
     <div class="auth-container">
       <div class="auth-card">
-        <h2 class="auth-title">Регистрация</h2>
+        <h2 class="auth-title">Вход</h2>
 
-        <form
-          id="registerForm"
-        >
+        <form id="loginForm">
+          <!-- Поле Email -->
           <div class="form-group">
             <label for="email" class="form-label">Электронная почта</label>
             <input
@@ -86,10 +84,10 @@
               class="form-input"
               placeholder="example@mail.com"
               required
-              autocapitalize="none"
             />
           </div>
 
+          <!-- Поле Пароль -->
           <div class="form-group">
             <label for="password" class="form-label">Пароль</label>
             <input
@@ -100,18 +98,20 @@
               placeholder="Минимум 6 символов"
               minlength="6"
               required
-              autocapitalize="none"
             />
           </div>
-          <button type="submit" class="auth-button">Зарегистрироваться</button>
+
+          <button type="submit" class="auth-button">Войти</button>
         </form>
 
         <div class="login-link">
-          Уже есть аккаунт? <a href="/static/login_page.html">Войдите</a>
+          Ещё нет аккаунта?
+          <a href="/static/registration_page.html">Зарегистрируйтесь</a>
         </div>
       </div>
     </div>
 
+    <!-- ПОДВАЛ -->
     <footer>
       <p>© ИТС</p>
     </footer>

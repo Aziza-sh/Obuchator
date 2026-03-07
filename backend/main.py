@@ -4,10 +4,12 @@ from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from jose.exceptions import JWTError
 
+from fastapi.staticfiles import StaticFiles
 from core.exceptions import CredentialsException
 from api.v1.auth import router as auth_router
 app = FastAPI()
 
+app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
 @app.exception_handler(JWTError)
 async def jwt_handler(request: Request, exc: JWTError) -> JSONResponse:
