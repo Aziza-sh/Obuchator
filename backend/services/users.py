@@ -1,15 +1,23 @@
 from typing import Optional
 from uuid import UUID
-from fastapi import HTTPException, status
 
+from core.exceptions import CredentialsException
+from core.security import (
+    create_access_token,
+    create_refresh_token,
+    decode_access_token,
+    decode_refresh_token,
+    get_password_hash,
+    verify_password,
+)
 from db.models.users import User
+from fastapi import HTTPException, status
+from redis.asyncio import Redis
 from repositories.users import UserRepository
-from sqlalchemy.ext.asyncio import AsyncSession
-from core.security import decode_access_token, get_password_hash, verify_password, create_access_token, create_refresh_token, decode_refresh_token
 from schemas.token import Token
 from schemas.users import UserCreate
-from core.exceptions import CredentialsException
-from redis.asyncio import Redis
+from sqlalchemy.ext.asyncio import AsyncSession
+
 
 class UserService:
     def __init__(self, session: AsyncSession, redis: Redis):
@@ -27,7 +35,7 @@ class UserService:
         user = await self.repo.get_by_email(email)
         if not user or not verify_password(password, user.password_hash):
             raise CredentialsException("Invalid credentials")
-        
+
         access = create_access_token({"sub": str(user.id)})
         refresh = create_refresh_token(str(user.id))
         return Token(access_token=access, refresh_token=refresh)

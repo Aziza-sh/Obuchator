@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/registr_login.css" />
+    <link rel="stylesheet" href="/styles/registr_login.css" />
     <title>Вход | Обучатор</title>
   </head>
   <body>
@@ -43,7 +43,7 @@
         >
           🌙
         </button>
-        <!-- Иконкка профиля -->
+        <!-- Иконка профиля -->
         <div class="header-right">
           <div class="profile-menu">
             <button
@@ -73,9 +73,7 @@
       <div class="auth-card">
         <h2 class="auth-title">Вход</h2>
 
-        <form
-          id="registerForm"
-        >
+        <form id="loginForm">
           <!-- Поле Email -->
           <div class="form-group">
             <label for="email" class="form-label">Электронная почта</label>
@@ -103,13 +101,12 @@
             />
           </div>
 
-          <!-- Кнопка регистрации -->
           <button type="submit" class="auth-button">Войти</button>
         </form>
 
         <div class="login-link">
           Ещё нет аккаунта?
-          <a href="/static/registration_page.html">Зарегистрируйтесь</a>
+          <a href="registration_page.html">Зарегистрируйтесь</a>
         </div>
       </div>
     </div>
@@ -120,5 +117,5 @@
     </footer>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="/static/reg_log.js"></script>
+  <script src="reg_log.js"></script>
 </html>

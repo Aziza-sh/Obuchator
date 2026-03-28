@@ -4,18 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Профиль пользователя | Обучатор</title>
-    <link rel="stylesheet" href="main_page.css" />
+    <link rel="stylesheet" href="styles/main_page.css" />
     <script src="reg_log.js"></script>
   </head>
   <body>
     <header>
       <div class="header-container">
-        <!-- Логотип слева -->
         <div class="logo">
-          <h1>Обучатор</h1>
+          <h1>Obuchator</h1>
         </div>
 
-        <!-- Поиск по центру -->
+        <!-- Поиск -->
         <div class="center-search">
           <input
             type="text"
@@ -38,8 +37,14 @@
             </svg>
           </button>
         </div>
-
-        <!-- Правый блок с иконкой профиля -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Переключить тему"
+        >
+          🌙
+        </button>
+        <!-- Иконка профиля -->
         <div class="header-right">
           <div class="profile-menu">
             <button
@@ -65,6 +70,7 @@
         </div>
       </div>
     </header>
+
     <div class="profile-page">
       <button class="back-btn" onclick="location.href='main_page.html'">
         ← На главную

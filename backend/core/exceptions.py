@@ -8,3 +8,12 @@ class CredentialsException(HTTPException):
             detail=detail,
             headers={"WWW-Authenticate": "Bearer"},
         )
+
+
+class NewsNotFoundException(Exception):
+    def __init__(self, news_id: int):
+        self.news_id = news_id
+
+
+class MetricsException(Exception):
+    pass
