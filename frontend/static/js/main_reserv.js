@@ -1,23 +1,7 @@
+import "./theme.js";
+import "./tabs.js";
+
 document.addEventListener("DOMContentLoaded", function () {
-  // ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ =====
-  const themeToggle = document.getElementById("theme-toggle");
-  const body = document.body;
-
-  if (themeToggle) {
-    const savedTheme = localStorage.getItem("site-theme") || "light";
-    if (savedTheme === "dark") {
-      body.classList.add("dark-theme");
-      themeToggle.textContent = "☀️";
-    }
-
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("dark-theme");
-      const isDark = body.classList.contains("dark-theme");
-      themeToggle.textContent = isDark ? "☀️" : "🌙";
-      localStorage.setItem("site-theme", isDark ? "dark" : "light");
-    });
-  }
-
   // ===== ФУНКЦИЯ АККОРДЕОНА =====
   function toggleAccordion(sectionId) {
     const container = document.getElementById(sectionId);
@@ -261,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Загружаем курсы при старте
   loadCourses();
   (function () {
-    const API_URL = "/news";
+    const API_URL = "http://localhost:8000/api/v1/news";
 
     let newsList = [];
     let currentNewsId = null;
@@ -284,14 +268,12 @@ document.addEventListener("DOMContentLoaded", function () {
     async function loadNews() {
       const res = await fetch(API_URL);
 
-      const json = await res.json();
-
-      if (!json.success) {
+      if (!res.ok) {
         alert("Ошибка загрузки новостей");
         return;
       }
 
-      newsList = json.data;
+      newsList = await res.json();
 
       renderNewsList();
     }
@@ -356,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function () {
         category: categorySelect.value,
         excerpt: excerptTextarea.value,
         content: contentDiv.innerHTML,
-        author: "admin",
+        author: localStorage.getItem("user_id"),
       };
 
       const res = await fetch(API_URL, {
@@ -367,16 +349,13 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(payload),
       });
 
-      const json = await res.json();
-
-      if (!json.success) {
+      if (!res.ok) {
         alert("Ошибка создания новости");
         return;
       }
 
       await loadNews();
     }
-
     /* =========================
    удаление новости
 ========================= */

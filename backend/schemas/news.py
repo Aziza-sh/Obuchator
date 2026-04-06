@@ -10,8 +10,6 @@ class NewsCreate(BaseModel):
     category: str
     excerpt: str
     content: str
-    author: UUID
-
 
 class NewsResponse(BaseModel):
 

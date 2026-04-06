@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Новость</title>
+
+<link rel="stylesheet" href="styles/main_page.css">
+
+</head>
+
+<body>
+
+<header>
+<h1 onclick="location.href='main_page.html'" style="cursor:pointer;">
+Obuchator
+</h1>
+</header>
+
+<main class="news-page-container">
+
+<h1 id="news-title"></h1>
+
+<div class="news-meta">
+<span id="news-author"></span>
+<span id="news-date"></span>
+</div>
+
+<div id="news-content" class="news-content"></div>
+
+<div class="news-stats">
+❤️ <span id="news-likes"></span>
+👁 <span id="news-views"></span>
+</div>
+
+<button id="like-btn">Поставить лайк</button>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/news_detail.js"></script>
+
+</body>
+</html>

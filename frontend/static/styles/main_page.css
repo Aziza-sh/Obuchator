@@ -1395,7 +1395,7 @@ input:checked + .toggle-slider:before {
   font-size: 14px;
 }
 
-.author-name {
+.news-card-author {
   color: var(--author-name);
   font-weight: 500;
   font-size: 15px;

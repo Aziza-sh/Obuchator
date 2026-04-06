@@ -4,6 +4,7 @@ import traceback
 from api.v1.auth import router as auth_router
 from api.v1.metrics import router as metrics_router
 from api.v1.news import router as news_router
+from api.v1.ws import router as ws_router
 from core.exceptions import (
     CredentialsException,
     MetricsException,
@@ -15,10 +16,26 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from jose.exceptions import JWTError
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+from fastapi.middleware.cors import CORSMiddleware
+
+
+templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static", html=True), name="static")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+app.mount("/static", StaticFiles(directory="../frontend/static", html=True), name="static")
 
 
 @app.exception_handler(JWTError)
@@ -90,6 +107,12 @@ async def global_exception_handler(request: Request, exc: Exception):
     )
 
 
+@app.get("/")
+async def index(request: Request):
+    return templates.TemplateResponse("main_page.html", {"request": request})
+
+
 app.include_router(auth_router)
 app.include_router(news_router)
+app.include_router(ws_router)
 app.include_router(metrics_router)
