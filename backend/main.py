@@ -12,15 +12,12 @@ from core.exceptions import (
 )
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from jose.exceptions import JWTError
 from starlette.exceptions import HTTPException as StarletteHTTPException
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-from fastapi import Request
-from fastapi.middleware.cors import CORSMiddleware
-
 
 templates = Jinja2Templates(directory="templates")
 
@@ -35,7 +32,7 @@ app.add_middleware(
 )
 
 
-app.mount("/static", StaticFiles(directory="../frontend/static", html=True), name="static")
+app.mount("/static", StaticFiles(directory="frontend/static", html=True), name="static")
 
 
 @app.exception_handler(JWTError)

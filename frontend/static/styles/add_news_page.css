@@ -1409,21 +1409,6 @@ footer {
 }
 /* npx prettier --write main_page.css */
 
-/* Панель инструментов */
-.editor-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px;
-  background: var(--menu-btn-bg, #f8f9fa);
-  border: 2px solid var(--panel-border, #ddd);
-  border-radius: 12px 12px 0 0;
-  margin-bottom: -2px;
-}
-.editor-toolbar button.active {
-  background: var(--accent, #1cecd4);
-  color: white;
-}
 /* Редактируемая область */
 .editable-content {
   min-height: 400px;
@@ -1468,16 +1453,7 @@ footer {
   outline: none;
   box-shadow: 0 0 0 3px var(--accent-light, rgba(28, 236, 212, 0.2));
 }
-.editor-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px;
-  background: var(--menu-btn-bg, #f8f9fa);
-  border: 2px solid var(--panel-border, #ddd);
-  border-radius: 12px 12px 0 0;
-  margin-bottom: -2px;
-}
+
 .editable-content {
   min-height: 400px;
   border: 2px solid var(--form-input-border, #e0e0e0);
@@ -1746,34 +1722,7 @@ footer {
   min-height: 100px;
   resize: vertical;
 }
-.editor-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px;
-  background: var(--menu-btn-bg, #f8f9fa);
-  border: 2px solid var(--panel-border, #ddd);
-  border-radius: 12px 12px 0 0;
-  margin-bottom: -2px;
-}
-.editor-toolbar button {
-  background: var(--panel-bg, white);
-  border: 1px solid var(--border-light, #ccc);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-family: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  color: var(--text-primary, #333);
-  transition: 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.editor-toolbar button:hover {
-  background: var(--accent-light, #e0f7f5);
-  border-color: var(--accent, #1cecd4);
-}
+
 .editable-content {
   min-height: 300px;
   border: 2px solid var(--form-input-border, #e0e0e0);

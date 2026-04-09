@@ -1,15 +1,14 @@
 from uuid import UUID
 
 from api.deps import get_current_user
-from db.models.users import User
 from core.exceptions import NewsNotFoundException
 from db.models.base import get_db
+from db.models.users import User
 from fastapi import APIRouter, Depends, HTTPException
 from metrics.news import NEWS_DELETED
 from schemas.news import NewsCreate, NewsResponse
 from services.news import create_news, delete_news, get_all_news, get_news_by_id
-from services.news_interactions import like_news, unlike_news, add_view
-
+from services.news_interactions import add_view, like_news, unlike_news
 from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter(prefix="/news", tags=["news"])
@@ -19,10 +18,11 @@ router = APIRouter(prefix="/news", tags=["news"])
 async def create_news_endpoint(
     data: NewsCreate,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
 ):
 
     return await create_news(db, data, current_user.id)
+
 
 @router.get("/", response_model=list[NewsResponse])
 async def get_news_endpoint(db: AsyncSession = Depends(get_db)):

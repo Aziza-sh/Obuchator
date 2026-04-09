@@ -1,7 +1,8 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from core.websocket import manager
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 router = APIRouter()
+
 
 @router.websocket("/ws/news")
 async def websocket_news(websocket: WebSocket):

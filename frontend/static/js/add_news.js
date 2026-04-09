@@ -61,7 +61,9 @@ function initToolbar() {
           if (selected) {
             insertBlock(`<div class="code-block"><pre>${selected}</pre></div>`);
           } else {
-            insertBlock('<div class="code-block"><pre>Вставьте код</pre></div>');
+            insertBlock(
+              '<div class="code-block"><pre>Вставьте код</pre></div>',
+            );
           }
 
           break;
@@ -69,7 +71,7 @@ function initToolbar() {
 
         case "info":
           insertBlock(
-            '<div class="info-box"><strong>Важно:</strong> Текст информации</div>'
+            '<div class="info-box"><strong>Важно:</strong> Текст информации</div>',
           );
           break;
 
@@ -166,7 +168,6 @@ function initPreview() {
 
 document.addEventListener("DOMContentLoaded", () => {
   requireAuth();
-
   initToolbar();
   initAddNews();
   initPreview();

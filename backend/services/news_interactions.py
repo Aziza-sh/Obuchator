@@ -1,9 +1,9 @@
-from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 
 from db.models.news.news_like import NewsLike
 from db.models.news.news_view import NewsView
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 
 async def like_news(db: AsyncSession, news_id: UUID):

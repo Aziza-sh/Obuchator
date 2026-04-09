@@ -11,6 +11,7 @@ class NewsCreate(BaseModel):
     excerpt: str
     content: str
 
+
 class NewsResponse(BaseModel):
 
     id: UUID
