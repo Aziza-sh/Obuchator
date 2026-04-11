@@ -183,10 +183,76 @@ function initAddNewsButton() {
   });
 }
 
+
+// ================= ДРУГИЕ НОВОСТИ (СПИСОК) =================
+
+async function loadOtherNews() {
+  const container = document.getElementById("other-news-list");
+  const noNewsDiv = document.getElementById("no-other-news");
+  if (!container) return;
+
+  try {
+    const res = await API.get("/news");
+    container.innerHTML = "";
+    if (!res.data.length) {
+      if (noNewsDiv) noNewsDiv.style.display = "block";
+      return;
+    }
+    if (noNewsDiv) noNewsDiv.style.display = "none";
+
+    // Сортируем по дате (новые сверху) и берём первые 5
+    const newsList = [...res.data].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    const otherNews = newsList.slice(0, 5);
+
+    otherNews.forEach(news => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <a href="news_page.html?id=${news.id}">${escapeHtml(news.title)}</a>
+        <small>${formatRelativeDate(news.created_at)}</small>
+      `;
+      container.appendChild(li);
+    });
+  } catch (e) {
+    console.error("Ошибка загрузки списка других новостей", e);
+    if (noNewsDiv) noNewsDiv.style.display = "block";
+  }
+}
+
+// Защита от XSS
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/[&<>]/g, function(m) {
+    if (m === '&') return '&amp;';
+    if (m === '<') return '&lt;';
+    if (m === '>') return '&gt;';
+    return m;
+  });
+}
+
+// Относительное время (сегодня, вчера, X дней назад)
+function formatRelativeDate(dateStr) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  
+  // Отбрасываем время – сравниваем только даты
+  const dateStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const nowStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  
+  const diffDays = Math.floor((nowStart - dateStart) / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 0) return 'сегодня';
+  if (diffDays === 1) return 'вчера';
+  if (diffDays < 7) return `${diffDays} дня назад`;
+  return date.toLocaleDateString('ru-RU');
+}
+
+
+
 // ================= INIT =================
 
 document.addEventListener("DOMContentLoaded", () => {
   loadNews();
-
   initAddNewsButton();
+  loadOtherNews();   
 });
+

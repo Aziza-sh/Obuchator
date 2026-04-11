@@ -1,5 +1,13 @@
 // ================= ПРОВЕРКА АВТОРИЗАЦИИ =================
-
+function requireAuth() {
+  const token = localStorage.getItem("access_token");
+  if (!token) {
+    alert("Сначала войдите в аккаунт");
+    window.location.href = "login_page.html";
+    return false;
+  }
+  return true;
+}
 // ================= ФОРМАТИРОВАНИЕ ТЕКСТА =================
 
 function formatDoc(command, value = null) {
@@ -95,10 +103,16 @@ function initToolbar() {
 
 function initAddNews() {
   const saveBtn = document.getElementById("save-btn");
-
   if (!saveBtn) return;
 
-  saveBtn.addEventListener("click", async () => {
+  saveBtn.addEventListener("click", async (e) => {
+    e.preventDefault(); // ОТМЕНЯЕМ ЛЮБОЕ СТАНДАРТНОЕ ПОВЕДЕНИЕ
+
+    // Блокируем кнопку, чтобы нельзя было кликнуть повторно
+    if (saveBtn.disabled) return;
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Сохранение...";
+
     const title = document.getElementById("news-title").value.trim();
     const category = document.getElementById("news-category").value;
     const excerpt = document.getElementById("news-excerpt").value.trim();
@@ -106,6 +120,8 @@ function initAddNews() {
 
     if (!title || !content) {
       alert("Заполните заголовок и текст новости");
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Сохранить";
       return;
     }
 
@@ -118,18 +134,14 @@ function initAddNews() {
       });
 
       alert("Новость успешно создана");
-
       window.location.href = "main_page.html";
     } catch (error) {
       console.error("Ошибка создания новости:", error);
-
       let message = "Ошибка создания новости";
-
-      if (error.response?.data?.detail) {
-        message = error.response.data.detail;
-      }
-
+      if (error.response?.data?.detail) message = error.response.data.detail;
       alert(message);
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Сохранить";
     }
   });
 }
@@ -164,6 +176,33 @@ function initPreview() {
   });
 }
 
+function initPasteCleaner() {
+  const editor = document.getElementById("news-content");
+  if (!editor) return;
+
+  editor.addEventListener("paste", (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const items = clipboardData.items;
+    let hasImage = false;
+
+    // Проверяем, есть ли среди вставляемых данных изображение
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        hasImage = true;
+        break;
+      }
+    }
+
+    // Если вставляется изображение – не мешаем (браузер вставит сам)
+    if (hasImage) return;
+
+    // Если это текст – очищаем форматирование
+    e.preventDefault();
+    const text = clipboardData.getData("text/plain");
+    document.execCommand("insertText", false, text);
+  });
+}
+
 // ================= INIT =================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -171,4 +210,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initToolbar();
   initAddNews();
   initPreview();
+  initPasteCleaner();
 });

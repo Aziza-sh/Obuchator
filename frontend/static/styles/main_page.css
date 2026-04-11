@@ -1768,3 +1768,10 @@ input:checked + .toggle-slider:before {
 .g-block {
   position: relative; /* добавить, если не было */
 }
+
+.add-news-btn {
+  display: block;
+  width: fit-content;
+  margin-left: auto;  /* вместо margin-right: auto */
+  margin-right: 0;
+}

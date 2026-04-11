@@ -199,7 +199,8 @@
   background: var(--accent-light, #e0f7f5);
   border-color: var(--accent, #1cecd4);
 }
-.editable-content {
+.editable-content,
+.preview-full-content {
   min-height: 300px;
   border: 2px solid var(--form-input-border, #e0e0e0);
   border-radius: 0 0 12px 12px;
@@ -213,12 +214,14 @@
   outline: none;
   transition: 0.3s;
 }
-.editable-content:focus {
+.editable-content:focus,
+.preview-full-content:focus {
   border-color: var(--accent, #1cecd4);
   box-shadow: 0 0 0 3px var(--accent-light, rgba(28, 236, 212, 0.2));
 }
 /* Стили для содержимого новости (как будет выглядеть на странице новостей) */
-.editable-content h3 {
+.editable-content h3,
+.preview-full-content h3 {
   color: #1cecd4;
   margin: 20px 0 15px;
   font-size: 22px;
@@ -226,10 +229,12 @@
   border-bottom: 1px solid #e0f7fa;
   font-family: "Buyan", sans-serif;
 }
-.editable-content p {
+.editable-content p,
+.preview-full-content p {
   margin-bottom: 15px;
 }
-.editable-content .code-block {
+.editable-content .code-block,
+.preview-full-content .code-block {
   background: #f8f9fa;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
@@ -239,7 +244,8 @@
   font-size: 14px;
   overflow-x: auto;
 }
-.editable-content .info-box {
+.editable-content .info-box,
+.preview-full-content .info-box {
   background: #e3f2fd;
   border-left: 4px solid #2196f3;
   padding: 15px;
@@ -247,7 +253,8 @@
   border-radius: 0 5px 5px 0;
   font-family: "Times New Roman", Times, serif;
 }
-.editable-content .info-box strong {
+.editable-content .info-box strong,
+.preview-full-content .info-box strong {
   color: #1565c0;
 }
 .image-upload-area {
@@ -1890,4 +1897,724 @@ footer {
 .preview-full h4 {
   color: var(--text-primary);
   margin-bottom: 15px;
+}
+/* ============================================
+   ROOT (светлая тема по умолчанию)
+   ============================================ */
+:root {
+  --bg-body: #f4f4f4;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --header-bg: #1cecd4;
+  --footer-bg: #07ebc8;
+  --header-text: #fff;
+  --footer-text: #fff;
+  --panel-bg: #fff;
+  --panel-border: #f0f0f0;
+  --accent: #1cecd4;
+  --accent-hover: #15d4bc;
+  --accent-light: rgba(28, 236, 212, 0.1);
+  --gradient-start: #1cecd4;
+  --gradient-end: #15d4bc;
+  --card-bg: #fff;
+  --card-border: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: rgba(0, 0, 0, 0.1);
+  --menu-btn-bg: #f8f9fa;
+  --menu-btn-hover: #e9ecef;
+  --menu-btn-text: #555;
+  --menu-btn-active-text: #fff;
+  --divider: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+  --scrollbar-track: #e0f7f5;
+  --scrollbar-thumb: linear-gradient(180deg, #1cecd4, #15d4bc);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #15d4bc, #0ab5ab);
+  --form-input-bg: #fafafa;
+  --form-input-border: #e0e0e0;
+  --form-input-color: #333;
+  --back-btn-bg: #f8f9fa;
+  --back-btn-text: #555;
+  --back-btn-border: #e0e0e0;
+  --back-btn-hover-bg: #1cecd4;
+  --back-btn-hover-text: #fff;
+  --edit-btn-bg: linear-gradient(90deg, #1cecd4, #15d4bc);
+  --edit-btn-hover: linear-gradient(90deg, #15d4bc, #0ab5ab);
+  --avatar-border: #1cecd4;
+  --border-light: #e0e0e0;
+}
+
+/* ============================================
+   ТЁМНАЯ ТЕМА
+   ============================================ */
+.dark-theme {
+  --bg-body: #121212;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --header-bg: #02a793;
+  --footer-bg: #02a793;
+  --panel-bg: #2d2d2d;
+  --panel-border: #404040;
+  --accent: #1cecd4;
+  --accent-hover: #15d4bc;
+  --accent-light: rgba(28, 236, 212, 0.2);
+  --gradient-start: #1cecd4;
+  --gradient-end: #089b92;
+  --card-bg: #2d2d2d;
+  --card-border: #1cecd4;
+  --card-shadow: rgba(28, 236, 212, 0.1);
+  --card-shadow-hover: rgba(28, 236, 212, 0.2);
+  --menu-btn-bg: #3d3d3d;
+  --menu-btn-hover: #4d4d4d;
+  --menu-btn-text: #e0e0e0;
+  --divider: linear-gradient(90deg, transparent, #555, transparent);
+  --scrollbar-track: #2d2d2d;
+  --scrollbar-thumb: linear-gradient(180deg, #1cecd4, #089b92);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #15d4bc, #0ab5ab);
+  --form-input-bg: #3d3d3d;
+  --form-input-border: #555;
+  --form-input-color: #e0e0e0;
+  --back-btn-bg: #3d3d3d;
+  --back-btn-text: #e0e0e0;
+  --back-btn-border: #555;
+  --back-btn-hover-bg: #1cecd4;
+  --back-btn-hover-text: #121212;
+  --edit-btn-bg: linear-gradient(90deg, #1eb894, #15d4bc);
+  --edit-btn-hover: linear-gradient(90deg, #138973, #15d4bc);
+  --avatar-border: #1cecd4;
+  --border-light: #404040;
+}
+
+/* ============================================
+   БАЗОВЫЕ СТИЛИ
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Buyan", sans-serif;
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+@font-face {
+  font-family: "Buyan";
+  src: url("Buyan/BuyanRegular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* ============================================
+   ШАПКА И ПОДВАЛ
+   ============================================ */
+header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 10px 0;
+  transition: background 0.3s;
+}
+footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+.logo h1 {
+  margin: 0;
+  font-size: 24px;
+  white-space: nowrap;
+}
+.center-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 30px;
+  position: relative;
+}
+.search-center-input {
+  width: 100%;
+  padding: 9px 40px 9px 15px;
+  font-size: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: all 0.3s;
+}
+.search-center-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+.search-center-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-center-button:hover {
+  background: var(--accent-hover);
+}
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.profile-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+.profile-icon {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  color: var(--header-text);
+}
+.theme-toggle:hover {
+  background: var(--accent-light);
+}
+
+/* ============================================
+   КОНТЕЙНЕР РЕДАКТОРА НОВОСТЕЙ
+   ============================================ */
+.news-editor-container {
+  display: flex;
+  min-height: 80vh;
+  margin: 20px auto;
+  max-width: 1400px;
+  width: 95%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: var(--panel-bg);
+}
+
+/* Левая панель со списком новостей */
+.news-sidebar {
+  width: 300px;
+  background: var(--panel-bg);
+  border-right: 2px solid var(--panel-border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+.news-count {
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.news-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.news-item {
+  background: var(--menu-btn-bg);
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: 0.2s;
+}
+.news-item.active {
+  border-left-color: var(--accent);
+  background: var(--accent-light);
+}
+.news-item:hover {
+  background: var(--menu-btn-hover);
+  transform: translateX(3px);
+}
+.news-item-title {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.news-item-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.delete-news {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.delete-news:hover {
+  opacity: 1;
+  color: #ff6b6b;
+}
+.add-news-btn {
+  background: none;
+  border: 2px dashed var(--accent);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.add-news-btn:hover {
+  background: var(--accent-light);
+}
+.back-button {
+  background: var(--back-btn-bg);
+  color: var(--back-btn-text);
+  border: 2px solid var(--back-btn-border);
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.back-button:hover {
+  background: var(--back-btn-hover-bg);
+  color: var(--back-btn-hover-text);
+  border-color: var(--back-btn-hover-bg);
+}
+
+/* Правая часть – редактор */
+.news-editor {
+  flex: 1;
+  padding: 30px;
+  background: var(--panel-bg);
+  overflow-y: auto;
+}
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--panel-border);
+}
+.editor-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+}
+.save-status {
+  color: var(--text-secondary);
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.editor-input,
+.editor-select,
+.editor-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--form-input-border);
+  border-radius: 12px;
+  background-color: var(--form-input-bg);
+  color: var(--form-input-color);
+  font-size: 16px;
+  transition: 0.3s;
+}
+.editor-input:focus,
+.editor-select:focus,
+.editor-textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.editor-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.image-upload-area {
+  border: 2px dashed var(--accent);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--form-input-bg);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.image-upload-area:hover {
+  background-color: var(--accent-light);
+}
+.image-upload-area input {
+  display: none;
+}
+.image-preview {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 15px;
+  border-radius: 8px;
+  display: none;
+}
+
+/* Панель инструментов */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+  background: var(--menu-btn-bg);
+  border: 2px solid var(--panel-border);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: -2px;
+}
+.editor-toolbar button {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: 0.2s;
+}
+.editor-toolbar button:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+
+/* Редактируемая область */
+.editable-content,
+.preview-full-content {
+  min-height: 300px;
+  border: 2px solid var(--form-input-border);
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+  background: var(--form-input-bg);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-y: auto;
+  outline: none;
+  transition: 0.3s;
+}
+.editable-content:focus,
+.preview-full-content:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.editable-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Кнопки действий */
+.editor-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.preview-btn,
+.save-btn {
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+.preview-btn {
+  background: var(--back-btn-bg);
+  color: var(--back-btn-text);
+  border: 2px solid var(--back-btn-border);
+}
+.preview-btn:hover {
+  background: var(--back-btn-hover-bg);
+  color: var(--back-btn-hover-text);
+  border-color: var(--back-btn-hover-bg);
+}
+.save-btn {
+  background: var(--edit-btn-bg);
+  color: white;
+}
+.save-btn:hover {
+  background: var(--edit-btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--card-shadow-hover);
+}
+
+/* ============================================
+   МОДАЛЬНОЕ ОКНО ПРЕДПРОСМОТРА
+   ============================================ */
+#preview-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: var(--panel-bg);
+  color: var(--text-primary);
+  width: 80%;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+}
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+.preview-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid var(--border-light);
+}
+.preview-card h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+.preview-card .news-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+.preview-card .news-excerpt {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+.preview-card .news-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+.preview-full {
+  border-top: 2px solid var(--border-light);
+  padding-top: 20px;
+}
+.preview-full h4 {
+  margin-bottom: 15px;
+}
+
+/* ============================================
+   СТИЛИ ДЛЯ ТЕКСТА НОВОСТЕЙ (на странице просмотра)
+   ============================================ */
+.news-content h1,
+.news-content h2,
+.news-content h3,
+.news-content h4,
+.news-content h5,
+.news-content h6 {
+  color: #1cecd4;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+}
+.news-content h3 {
+  font-size: 1.5rem;
+  border-left: 4px solid #1cecd4;
+  padding-left: 15px;
+}
+.news-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+.news-content ul,
+.news-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.news-content li {
+  margin-bottom: 0.3rem;
+}
+.news-content code {
+  background: #f4f4f4;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9em;
+}
+.news-content .code-block {
+  background: #f4f4f4;
+  border-left: 4px solid #3498db;
+  padding: 12px;
+  margin: 1rem 0;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+  border-radius: 4px;
+}
+.news-content .info-box {
+  background: #e7f3ff;
+  border-left: 4px solid #2196f3;
+  padding: 12px 20px;
+  margin: 1rem 0;
+  border-radius: 8px;
+}
+
+/* ============================================
+   ТЁМНАЯ ТЕМА ДЛЯ БЛОКОВ КОДА И INFO
+   ============================================ */
+.dark-theme .news-content .code-block,
+.dark-theme .news-content pre,
+.dark-theme .news-content code {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  border-left-color: #7aa2f7;
+}
+.dark-theme .news-content .info-box {
+  background: #1e2a3a;
+  border-left-color: #7aa2f7;
+  color: #e0e0e0;
+}
+.dark-theme .news-content .info-box strong {
+  color: #7aa2f7;
+}
+.dark-theme .news-content code {
+  background: #3a3a4a;
+}
+.dark-theme .editable-content .code-block,
+.dark-theme .preview-full-content .code-block {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  border-left-color: #7aa2f7;
+}
+.dark-theme .editable-content .info-box,
+.dark-theme .preview-full-content .info-box {
+  background: #1e2a3a;
+  border-left-color: #7aa2f7;
+  color: #e0e0e0;
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+@media (max-width: 900px) {
+  .news-editor-container {
+    flex-direction: column;
+  }
+  .news-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--panel-border);
+    max-height: 350px;
+  }
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .center-search {
+    max-width: 100%;
+    margin: 0;
+  }
+  .editor-toolbar {
+    justify-content: center;
+  }
+  .editor-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .preview-btn,
+  .save-btn {
+    text-align: center;
+  }
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .news-editor {
+    padding: 15px;
+  }
+  .editor-toolbar button {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Obuchator</title>
     <link rel="stylesheet" href="styles/course_page.css" />
+    <link rel="stylesheet" href="styles/main_page.css" />
     <svg style="display: none">
       <symbol id="profile-icon" viewBox="0 0 24 24">
         <path
@@ -31,12 +32,11 @@
     <!-- Header -->
     <header>
       <div class="header-container">
-        <!-- Логотип слева -->
         <div class="logo">
-          <h1>Обучатор</h1>
+          <h1>Obuchator</h1>
         </div>
 
-        <!-- Поиск по центру -->
+        <!-- Поиск -->
         <div class="center-search">
           <input
             type="text"
@@ -59,7 +59,14 @@
             </svg>
           </button>
         </div>
-
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Переключить тему"
+        >
+          🌙
+        </button>
+        <!-- Иконка профиля -->
         <div class="header-right">
           <div class="profile-menu">
             <button
@@ -81,6 +88,8 @@
                 />
               </svg>
             </button>
+
+            <button id="logout-btn" class="action-btn logout-btn">Выйти</button>
           </div>
         </div>
       </div>
@@ -228,5 +237,14 @@
       <p>© ИТС</p>
     </footer>
   </body>
-  <script src="course.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/websocket.js"></script>
+  <script src="js/courses.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/add_news.js"></script>
+  <script src="js/main.js"></script>
 </html>
