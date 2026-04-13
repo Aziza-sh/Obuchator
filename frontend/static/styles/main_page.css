@@ -1772,6 +1772,6 @@ input:checked + .toggle-slider:before {
 .add-news-btn {
   display: block;
   width: fit-content;
-  margin-left: auto;  /* вместо margin-right: auto */
+  margin-left: auto; /* вместо margin-right: auto */
   margin-right: 0;
 }

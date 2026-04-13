@@ -4,6 +4,12 @@ from uuid import UUID
 from pydantic import BaseModel
 
 
+class AuthorShort(BaseModel):
+    id: UUID
+    first_name: str
+    last_name: str
+
+
 class NewsCreate(BaseModel):
 
     title: str
@@ -21,6 +27,7 @@ class NewsResponse(BaseModel):
     content: str
     author_id: UUID
     created_at: datetime
+    author: AuthorShort
 
     class Config:
         from_attributes = True

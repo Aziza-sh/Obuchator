@@ -87,136 +87,138 @@
         </div>
 
         <div class="profile-info">
-          <h1 class="profile-name">Иван Петров</h1>
-          <p class="profile-role">Студент • Уровень 5</p>
+          <h1 class="profile-name" id="profile-fullname">Иван Петров</h1>
+          <p class="profile-role" id="profile-role">Студент • Уровень 5</p>
+          <!-- остальное без изменений -->
+        </div>
 
-          <div class="profile-stats">
-            <div class="stat-item">
-              <span class="stat-value">87%</span>
-              <span class="stat-label">Прогресс</span>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-value">87%</span>
+            <span class="stat-label">Прогресс</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">24</span>
+            <span class="stat-label">Курсов</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">156</span>
+            <span class="stat-label">Часов</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">15</span>
+            <span class="stat-label">Достижений</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-sections">
+      <div class="section-card">
+        <h2 class="section-title">Личная информация</h2>
+        <!-- Внутри .info-grid -->
+        <div class="info-label">Email:</div>
+        <div class="info-value" id="profile-email">ivan.petrov@example.com</div>
+
+        <div class="info-label">Телефон:</div>
+        <div class="info-value" id="profile-phone">+7 (999) 123-45-67</div>
+
+        <div class="info-label">Дата регистрации:</div>
+        <div class="info-value" id="profile-regdate">15.03.2023</div>
+
+        <div class="info-label">Учебная группа:</div>
+        <div class="info-value" id="profile-group">ИТС-21-1</div>
+
+        <div class="info-label">Статус:</div>
+        <div class="info-value">
+          <span id="profile-status" style="color: #1cecd4; font-weight: bold"
+            >Активный</span
+          >
+        </div>
+        <button class="edit-btn">Редактировать профиль</button>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">Прогресс обучения</h2>
+        <ul class="progress-list">
+          <li class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Основы программирования</span>
+              <span class="progress-percent">100%</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value">24</span>
-              <span class="stat-label">Курсов</span>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%"></div>
             </div>
-            <div class="stat-item">
-              <span class="stat-value">156</span>
-              <span class="stat-label">Часов</span>
+          </li>
+          <li class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Веб-разработка</span>
+              <span class="progress-percent">75%</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-value">15</span>
-              <span class="stat-label">Достижений</span>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%"></div>
             </div>
+          </li>
+          <li class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Базы данных</span>
+              <span class="progress-percent">60%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%"></div>
+            </div>
+          </li>
+          <li class="progress-item">
+            <div class="progress-header">
+              <span class="progress-name">Алгоритмы</span>
+              <span class="progress-percent">45%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 45%"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2 class="section-title">Достижения</h2>
+        <div class="achievements-grid">
+          <div class="achievement-item">
+            <div class="achievement-icon">🎯</div>
+            <div class="achievement-name">Первые шаги</div>
           </div>
         </div>
       </div>
 
-      <div class="profile-sections">
-        <div class="section-card">
-          <h2 class="section-title">Личная информация</h2>
-          <div class="info-grid">
-            <div class="info-label">Email:</div>
-            <div class="info-value">ivan.petrov@example.com</div>
-
-            <div class="info-label">Телефон:</div>
-            <div class="info-value">+7 (999) 123-45-67</div>
-
-            <div class="info-label">Дата регистрации:</div>
-            <div class="info-value">15.03.2023</div>
-
-            <div class="info-label">Учебная группа:</div>
-            <div class="info-value">ИТС-21-1</div>
-
-            <div class="info-label">Статус:</div>
-            <div class="info-value">
-              <span style="color: #1cecd4; font-weight: bold">Активный</span>
-            </div>
-          </div>
-          <button class="edit-btn">Редактировать профиль</button>
+      <div class="section-card">
+        <h2 class="section-title">Настройки</h2>
+        <div class="settings-option">
+          <span class="settings-label">Уведомления по email</span>
+          <label class="toggle-switch">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
         </div>
-
-        <div class="section-card">
-          <h2 class="section-title">Прогресс обучения</h2>
-          <ul class="progress-list">
-            <li class="progress-item">
-              <div class="progress-header">
-                <span class="progress-name">Основы программирования</span>
-                <span class="progress-percent">100%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
-              </div>
-            </li>
-            <li class="progress-item">
-              <div class="progress-header">
-                <span class="progress-name">Веб-разработка</span>
-                <span class="progress-percent">75%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: 75%"></div>
-              </div>
-            </li>
-            <li class="progress-item">
-              <div class="progress-header">
-                <span class="progress-name">Базы данных</span>
-                <span class="progress-percent">60%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: 60%"></div>
-              </div>
-            </li>
-            <li class="progress-item">
-              <div class="progress-header">
-                <span class="progress-name">Алгоритмы</span>
-                <span class="progress-percent">45%</span>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: 45%"></div>
-              </div>
-            </li>
-          </ul>
+        <div class="settings-option">
+          <span class="settings-label">Темная тема</span>
+          <label class="toggle-switch">
+            <input type="checkbox" />
+            <span class="toggle-slider"></span>
+          </label>
         </div>
-
-        <div class="section-card">
-          <h2 class="section-title">Достижения</h2>
-          <div class="achievements-grid">
-            <div class="achievement-item">
-              <div class="achievement-icon">🎯</div>
-              <div class="achievement-name">Первые шаги</div>
-            </div>
-          </div>
+        <div class="settings-option">
+          <span class="settings-label">Еженедельный отчет</span>
+          <label class="toggle-switch">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
         </div>
-
-        <div class="section-card">
-          <h2 class="section-title">Настройки</h2>
-          <div class="settings-option">
-            <span class="settings-label">Уведомления по email</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked />
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
-          <div class="settings-option">
-            <span class="settings-label">Темная тема</span>
-            <label class="toggle-switch">
-              <input type="checkbox" />
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
-          <div class="settings-option">
-            <span class="settings-label">Еженедельный отчет</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked />
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
-          <div class="settings-option">
-            <span class="settings-label">Звуковые эффекты</span>
-            <label class="toggle-switch">
-              <input type="checkbox" checked />
-              <span class="toggle-slider"></span>
-            </label>
-          </div>
+        <div class="settings-option">
+          <span class="settings-label">Звуковые эффекты</span>
+          <label class="toggle-switch">
+            <input type="checkbox" checked />
+            <span class="toggle-slider"></span>
+          </label>
         </div>
       </div>
     </div>
@@ -225,5 +227,7 @@
       <p>© ИТС</p>
     </footer>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/reg_log.js"></script>
   <script src="js/profile.js"></script>
 </html>

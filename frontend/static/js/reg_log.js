@@ -210,3 +210,8 @@ async function fetchProtectedData() {
     }
   }
 }
+
+// Делаем api и функции глобальными для использования в других скриптах
+window.api = api;
+window.isAuthenticated = isAuthenticated;
+window.logout = logout;
