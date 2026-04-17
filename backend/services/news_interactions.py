@@ -5,6 +5,7 @@ from db.models.news.news_view import NewsView
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+
 async def like_news(db: AsyncSession, news_id: UUID, user_id: UUID):
     result = await db.execute(
         select(NewsLike).where(
@@ -13,7 +14,7 @@ async def like_news(db: AsyncSession, news_id: UUID, user_id: UUID):
         )
     )
 
-    existing = result.scalars().first()  # ← НЕ scalar_one_or_none()
+    existing = result.scalars().first()
 
     if existing:
         return {"message": "Already liked"}
@@ -43,6 +44,7 @@ async def unlike_news(db: AsyncSession, news_id: UUID, user_id: UUID):
 
     return {"message": "unliked"}
 
+
 async def add_view(db: AsyncSession, news_id: UUID):
 
     view = NewsView(news_id=news_id)
@@ -56,8 +58,6 @@ async def add_view(db: AsyncSession, news_id: UUID):
 
 async def get_likes_count(db: AsyncSession, news_id: UUID) -> int:
     result = await db.execute(
-        select(func.count()).select_from(NewsLike).where(
-            NewsLike.news_id == news_id
-        )
+        select(func.count()).select_from(NewsLike).where(NewsLike.news_id == news_id)
     )
     return result.scalar_one()

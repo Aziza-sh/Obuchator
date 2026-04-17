@@ -31,9 +31,6 @@ from metrics.news import NEWS_DELETED
 router = APIRouter(prefix="/news", tags=["news"])
 
 
-# ---------------------------
-# CREATE
-# ---------------------------
 @router.post("/", response_model=NewsResponse)
 async def create_news_endpoint(
     data: NewsCreate,
@@ -56,9 +53,6 @@ async def create_news_endpoint(
     }
 
 
-# ---------------------------
-# GET ALL (ONLY AUTH)
-# ---------------------------
 @router.get("/", response_model=List[NewsResponse])
 async def get_news_endpoint(
     db: AsyncSession = Depends(get_db),
@@ -70,42 +64,38 @@ async def get_news_endpoint(
 
     for news in news_list:
 
-        # likes count (SQL, без отдельной функции)
         likes_count = await db.scalar(
             select(func.count())
             .select_from(NewsLike)
             .where(NewsLike.news_id == news.id)
         )
 
-        # is_liked
         is_liked = await db.scalar(
-            select(NewsLike)
-            .where(
+            select(NewsLike).where(
                 NewsLike.news_id == news.id,
                 NewsLike.user_id == current_user.id,
             )
         )
         is_liked = is_liked is not None
 
-        result.append({
-            "id": news.id,
-            "title": news.title,
-            "category": news.category,
-            "excerpt": news.excerpt,
-            "content": news.content,
-            "author_id": news.author_id,
-            "created_at": news.created_at,
-            "author": news.author,
-            "likes_count": likes_count or 0,
-            "is_liked": is_liked,
-        })
+        result.append(
+            {
+                "id": news.id,
+                "title": news.title,
+                "category": news.category,
+                "excerpt": news.excerpt,
+                "content": news.content,
+                "author_id": news.author_id,
+                "created_at": news.created_at,
+                "author": news.author,
+                "likes_count": likes_count or 0,
+                "is_liked": is_liked,
+            }
+        )
 
     return result
 
 
-# ---------------------------
-# GET ONE
-# ---------------------------
 @router.get("/{news_id}", response_model=NewsResponse)
 async def get_single_news(
     news_id: UUID,
@@ -118,14 +108,11 @@ async def get_single_news(
         raise HTTPException(status_code=404, detail="News not found")
 
     likes_count = await db.scalar(
-        select(func.count())
-        .select_from(NewsLike)
-        .where(NewsLike.news_id == news.id)
+        select(func.count()).select_from(NewsLike).where(NewsLike.news_id == news.id)
     )
 
     is_liked = await db.scalar(
-        select(NewsLike)
-        .where(
+        select(NewsLike).where(
             NewsLike.news_id == news.id,
             NewsLike.user_id == current_user.id,
         )
@@ -146,9 +133,6 @@ async def get_single_news(
     }
 
 
-# ---------------------------
-# DELETE
-# ---------------------------
 @router.delete("/{news_id}")
 async def delete_news_endpoint(
     news_id: UUID,
@@ -166,9 +150,6 @@ async def delete_news_endpoint(
     return {"status": "deleted"}
 
 
-# ---------------------------
-# LIKE
-# ---------------------------
 @router.post("/{news_id}/like")
 async def like_news_endpoint(
     news_id: UUID,
@@ -178,9 +159,6 @@ async def like_news_endpoint(
     return await like_news(db, news_id, current_user.id)
 
 
-# ---------------------------
-# UNLIKE
-# ---------------------------
 @router.delete("/{news_id}/like")
 async def unlike_news_endpoint(
     news_id: UUID,
@@ -190,9 +168,6 @@ async def unlike_news_endpoint(
     return await unlike_news(db, news_id, current_user.id)
 
 
-# ---------------------------
-# VIEW
-# ---------------------------
 @router.post("/{news_id}/view")
 async def view_news_endpoint(
     news_id: UUID,

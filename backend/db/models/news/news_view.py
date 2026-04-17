@@ -17,4 +17,3 @@ class NewsView(Base):
     viewed_at: Mapped[datetime] = mapped_column(default=datetime.utcnow)
 
     news: Mapped["News"] = relationship(back_populates="views")
-    # user: Mapped["User"] = relationship(...)  # при необходимости

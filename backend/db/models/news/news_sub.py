@@ -13,5 +13,3 @@ class NewsSubscription(Base):
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id"))
     news_id: Mapped[UUID] = mapped_column(ForeignKey("news.id"))
-    # Если нужна связь с User, добавьте:
-    # user: Mapped["User"] = relationship(back_populates="subscriptions")

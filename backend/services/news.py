@@ -11,7 +11,6 @@ from metrics.news import NEWS_FETCHED, NEWS_DELETED
 from schemas.news import NewsCreate
 
 
-# ---------------- CREATE ----------------
 async def create_news(db: AsyncSession, data: NewsCreate, author_id: UUID):
     news = News(
         title=data.title,
@@ -39,33 +38,24 @@ async def create_news(db: AsyncSession, data: NewsCreate, author_id: UUID):
     return news
 
 
-# ---------------- GET ALL (ORM ONLY) ----------------
 async def get_all_news(db: AsyncSession):
     NEWS_FETCHED.inc()
 
     stmt = (
-        select(News)
-        .options(selectinload(News.author))
-        .order_by(News.created_at.desc())
+        select(News).options(selectinload(News.author)).order_by(News.created_at.desc())
     )
 
     result = await db.execute(stmt)
     return result.scalars().all()
 
 
-# ---------------- GET BY ID (ORM ONLY) ----------------
 async def get_news_by_id(db: AsyncSession, news_id: UUID):
-    stmt = (
-        select(News)
-        .where(News.id == news_id)
-        .options(selectinload(News.author))
-    )
+    stmt = select(News).where(News.id == news_id).options(selectinload(News.author))
 
     result = await db.execute(stmt)
     return result.scalar_one_or_none()
 
 
-# ---------------- DELETE (ORM SAFE) ----------------
 async def delete_news(db: AsyncSession, news_id: UUID):
     news = await get_news_by_id(db, news_id)
 
