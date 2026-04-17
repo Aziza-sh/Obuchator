@@ -28,6 +28,8 @@ class NewsResponse(BaseModel):
     author_id: UUID
     created_at: datetime
     author: AuthorShort
+    likes_count: int
+    is_liked: bool
 
     class Config:
         from_attributes = True
