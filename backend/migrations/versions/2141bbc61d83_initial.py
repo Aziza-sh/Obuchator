@@ -1,8 +1,8 @@
-"""init
+"""initial
 
-Revision ID: 12fd5d2a0e6c
+Revision ID: 2141bbc61d83
 Revises:
-Create Date: 2026-04-16 07:10:01.395010
+Create Date: 2026-04-20 10:43:38.932912
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "12fd5d2a0e6c"
+revision: str = "2141bbc61d83"
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -56,7 +56,7 @@ def upgrade() -> None:
     op.create_index(op.f("ix_news_id"), "news", ["id"], unique=False)
     op.create_table(
         "news_likes",
-        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("id", sa.Uuid(), nullable=False),
         sa.Column("user_id", sa.Uuid(), nullable=False),
         sa.Column("news_id", sa.Uuid(), nullable=False),
         sa.ForeignKeyConstraint(
@@ -68,6 +68,7 @@ def upgrade() -> None:
             ["users.id"],
         ),
         sa.PrimaryKeyConstraint("id"),
+        sa.UniqueConstraint("user_id", "news_id", name="unique_user_news_like"),
     )
     op.create_table(
         "news_subscriptions",
@@ -86,8 +87,10 @@ def upgrade() -> None:
     )
     op.create_table(
         "news_views",
-        sa.Column("id", sa.Uuid(), nullable=False),
-        sa.Column("user_id", sa.Uuid(), nullable=False),
+        sa.Column(
+            "id", sa.Uuid(), server_default=sa.text("gen_random_uuid()"), nullable=False
+        ),
+        sa.Column("user_id", sa.Uuid(), nullable=True),
         sa.Column("news_id", sa.Uuid(), nullable=False),
         sa.Column("viewed_at", sa.DateTime(), nullable=False),
         sa.ForeignKeyConstraint(

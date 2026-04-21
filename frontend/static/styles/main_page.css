@@ -1764,42 +1764,36 @@ input:checked + .toggle-slider:before {
   right: 8px;
   /* остальное без изменений */
 }
-/* Контейнер для карточки курса должен быть relative для позиционирования крестика */
+
 .g-block {
-  position: relative; /* добавить, если не было */
+  position: relative;
 }
 
 .add-news-btn {
   display: block;
   width: fit-content;
-  margin-left: auto; /* вместо margin-right: auto */
+  margin-left: auto;
   margin-right: 0;
 }
 
-
-/* Добавляем отступы по бокам для всего контента профиля */
 .profile-page {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 0 30px;  /* ← увеличиваем горизонтальные отступы */
+  padding: 0 30px;
 }
 
-/* Увеличиваем расстояние между секциями и от них до футера */
 .profile-sections {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
   margin-top: 30px;
-  margin-bottom: 60px;  /* ← добавляем большой отступ снизу перед футером */
+  margin-bottom: 60px;
 }
 
-/* Дополнительная страховка – отступ у последней секции */
 .section-card:last-child {
   margin-bottom: 0;
 }
 
-/* Если футер всё ещё слишком близко, можно добавить отступ самому футеру */
 footer {
-  margin-top: 20px;  /* или просто оставить уже имеющийся, но проверить */
+  margin-top: 20px;
 }
-

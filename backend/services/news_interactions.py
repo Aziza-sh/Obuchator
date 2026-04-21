@@ -45,14 +45,19 @@ async def unlike_news(db: AsyncSession, news_id: UUID, user_id: UUID):
     return {"message": "unliked"}
 
 
-async def add_view(db: AsyncSession, news_id: UUID):
+from sqlalchemy import select
 
-    view = NewsView(news_id=news_id)
 
+async def add_view(db: AsyncSession, news_id: UUID, user_id: UUID):
+    existing = await db.scalar(
+        select(NewsView).where(NewsView.news_id == news_id, NewsView.user_id == user_id)
+    )
+    if existing:
+        return {"message": "already viewed"}
+
+    view = NewsView(news_id=news_id, user_id=user_id)
     db.add(view)
-
     await db.commit()
-
     return {"message": "view counted"}
 
 

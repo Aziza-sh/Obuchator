@@ -45,7 +45,9 @@ window.loadNews = async function () {
     const dateSpan = document.createElement("span");
     dateSpan.className = "news-date";
     const date = new Date(news.created_at);
-    dateSpan.textContent = isNaN(date.getTime()) ? news.created_at : date.toLocaleDateString("ru-RU");
+    dateSpan.textContent = isNaN(date.getTime())
+      ? news.created_at
+      : date.toLocaleDateString("ru-RU");
 
     header.appendChild(categorySpan);
     header.appendChild(dateSpan);
@@ -89,9 +91,15 @@ window.loadNews = async function () {
       authorName = news.author_name;
     }
 
-    let initials = authorName !== "Аноним"
-      ? authorName.split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2)
-      : "А";
+    let initials =
+      authorName !== "Аноним"
+        ? authorName
+            .split(" ")
+            .map((w) => w[0])
+            .join("")
+            .toUpperCase()
+            .slice(0, 2)
+        : "А";
     avatar.textContent = initials;
 
     const authorNameSpan = document.createElement("span");

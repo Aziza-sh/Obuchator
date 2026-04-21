@@ -20,34 +20,45 @@ async function loadNewsDetail() {
     const content = document.getElementById("news-content");
     const likes = document.getElementById("news-likes");
 
+    // получаем элемент счётчика просмотров
+    const viewsSpan = document.getElementById("news-views");
+
     if (title) title.innerText = news.title || "Без заголовка";
     if (content) content.innerHTML = news.content || "";
 
-    // 🔥 СЧЁТЧИК
+    //СЧЁТЧИК ЛАЙКОВ
     if (likes) likes.innerText = news.likes_count || 0;
 
-    // 🔥 СТАТУС ЛАЙКА
+    //отображаем количество просмотров
+    if (viewsSpan) viewsSpan.innerText = news.views_count || 0;
+
+    //СТАТУС ЛАЙКА
     isLiked = news.is_liked || false;
     updateLikeButton();
 
+    //отправляем запрос на увеличение счётчика просмотров
+    // Запрос отправляется без ожидания ответа, чтобы не блокировать отрисовку страницы
+    API.post(`/news/${currentNewsId}/view`).catch((e) =>
+      console.warn("Ошибка отправки просмотра", e),
+    );
   } catch (e) {
     console.error("Ошибка загрузки новости", e);
   }
 }
 
-// 🔥 ОБНОВЛЕНИЕ КНОПКИ
+// ОБНОВЛЕНИЕ КНОПКИ ЛАЙКА
 function updateLikeButton() {
   const btn = document.getElementById("like-btn");
   if (!btn) return;
 
   if (isLiked) {
-    btn.innerText = "👎 Убрать лайк";
+    btn.innerText = "Убрать лайк";
   } else {
     btn.innerText = "👍 Поставить лайк";
   }
 }
 
-// 🔥 TOGGLE ЛАЙКА
+//TOGGLE ЛАЙКА
 async function toggleLike() {
   if (!currentNewsId) return;
 
@@ -58,19 +69,17 @@ async function toggleLike() {
       await API.delete(`/news/${currentNewsId}/like`);
       isLiked = false;
 
-      // уменьшаем счётчик
+      // уменьшаем счётчик лайков
       if (likesEl) likesEl.innerText = Number(likesEl.innerText) - 1;
-
     } else {
       await API.post(`/news/${currentNewsId}/like`);
       isLiked = true;
 
-      // увеличиваем счётчик
+      // увеличиваем счётчик лайков
       if (likesEl) likesEl.innerText = Number(likesEl.innerText) + 1;
     }
 
     updateLikeButton();
-
   } catch (e) {
     console.error("Ошибка лайка", e);
   }

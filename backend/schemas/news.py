@@ -30,6 +30,7 @@ class NewsResponse(BaseModel):
     author: AuthorShort
     likes_count: int
     is_liked: bool
+    views_count: int
 
     class Config:
         from_attributes = True

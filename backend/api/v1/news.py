@@ -90,6 +90,7 @@ async def get_news_endpoint(
                 "author": news.author,
                 "likes_count": likes_count or 0,
                 "is_liked": is_liked,
+                "views_count": 0,
             }
         )
 
@@ -130,6 +131,7 @@ async def get_single_news(
         "author": news.author,
         "likes_count": likes_count or 0,
         "is_liked": is_liked,
+        "views_count": getattr(news, "views_count", 0),
     }
 
 
@@ -172,5 +174,6 @@ async def unlike_news_endpoint(
 async def view_news_endpoint(
     news_id: UUID,
     db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
 ):
-    return await add_view(db, news_id)
+    return await add_view(db, news_id, current_user.id)
