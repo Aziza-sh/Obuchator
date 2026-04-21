@@ -6,10 +6,13 @@ from sqlalchemy.orm import selectinload
 
 from db.models.news.news import News
 from db.models.news.news_like import NewsLike
+from db.models.news.news_sub import NewsSubscription
 from db.models.news.news_view import NewsView
+from db.models.users import User
 from core.websocket import manager
 from metrics.news import NEWS_FETCHED, NEWS_DELETED
 from schemas.news import NewsCreate
+from services.telegram_bot import send_news_notification
 
 
 async def create_news(db: AsyncSession, data: NewsCreate, author_id: UUID):
@@ -39,6 +42,20 @@ async def create_news(db: AsyncSession, data: NewsCreate, author_id: UUID):
             },
         }
     )
+
+    # Notify Telegram subscribers
+    subs_stmt = select(NewsSubscription).options(selectinload(NewsSubscription.user))
+    subs_result = await db.execute(subs_stmt)
+    subscriptions = subs_result.scalars().all()
+
+    for sub in subscriptions:
+        if sub.user and sub.user.telegram_chat_id:
+            await send_news_notification(
+                chat_id=sub.user.telegram_chat_id,
+                news_id=news_with_author.id,
+                title=news_with_author.title,
+                excerpt=news_with_author.excerpt,
+            )
 
     return news_with_author
 

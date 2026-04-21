@@ -20,4 +20,5 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     role: Mapped[str] = mapped_column(default="student")
     is_active: Mapped[bool] = mapped_column(default=True)
+    telegram_chat_id: Mapped[str | None] = mapped_column(nullable=True, default=None)
     news: Mapped[List["News"]] = relationship(back_populates="author")

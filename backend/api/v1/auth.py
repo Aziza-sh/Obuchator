@@ -1,15 +1,17 @@
 from typing import Annotated
 
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+
 from api.deps import get_current_user, get_user_service
 from db.models.users import User
-from fastapi import APIRouter, Depends, Header, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from schemas.token import Token, TokenRequestForm
 from schemas.users import UserCreate, UserOut
 from services.users import UserService
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/token")
+
+_oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/token")
 
 
 @router.post("/register", response_model=UserOut, status_code=201)
@@ -26,14 +28,14 @@ async def token(
 ) -> Token:
     if form_data.grant_type == "password":
         return await service.authenticate(form_data.email, form_data.password)
-    elif form_data.grant_type == "refresh_token":
+    if form_data.grant_type == "refresh_token":
         return await service.refresh_token(form_data.refresh_token)
     raise HTTPException(status_code=400, detail="Invalid grant_type")
 
 
 @router.post("/logout", status_code=204)
 async def logout(
-    token: Annotated[str, Depends(oauth2_scheme)],
+    token: Annotated[str, Depends(_oauth2_scheme)],
     service: UserService = Depends(get_user_service),
 ):
     await service.logout(token)

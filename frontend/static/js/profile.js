@@ -143,6 +143,87 @@ function initEditButton() {
   }
 }
 
+// ================= TELEGRAM =================
+
+async function loadTelegramStatus() {
+  try {
+    const [statusRes, subRes] = await Promise.all([
+      window.api.get("/api/v1/telegram/status"),
+      window.api.get("/news/subscribe"),
+    ]);
+
+    const linked = statusRes.data.linked;
+    const subscribed = subRes.data.subscribed;
+
+    document.getElementById("tg-not-linked").style.display = linked ? "none" : "block";
+    document.getElementById("tg-linked").style.display = linked ? "block" : "none";
+
+    const toggle = document.getElementById("news-sub-toggle");
+    if (toggle) toggle.checked = subscribed;
+  } catch (e) {
+    console.error("Ошибка загрузки статуса Telegram:", e);
+    // при ошибке показываем блок "не привязан"
+    document.getElementById("tg-not-linked").style.display = "block";
+    document.getElementById("tg-linked").style.display = "none";
+  }
+}
+
+window.linkTelegram = async function () {
+  try {
+    const res = await window.api.post("/api/v1/telegram/link-token");
+    const token = res.data.token;
+    const expires = res.data.expires_in;
+
+    document.getElementById("tg-link-command").textContent = `/start ${token}`;
+    document.getElementById("tg-token-expire").textContent =
+      `Ссылка действительна ${Math.floor(expires / 60)} минут`;
+
+    const modal = document.getElementById("tg-modal");
+    modal.style.display = "flex";
+  } catch (e) {
+    alert("Не удалось получить ссылку. Попробуйте ещё раз.");
+  }
+};
+
+window.closeTgModal = async function () {
+  document.getElementById("tg-modal").style.display = "none";
+  await loadTelegramStatus();
+};
+
+window.unlinkTelegram = async function () {
+  if (!confirm("Отвязать Telegram-аккаунт? Уведомления перестанут приходить.")) return;
+  try {
+    await window.api.delete("/api/v1/telegram/unlink");
+    await loadTelegramStatus();
+  } catch (e) {
+    alert("Не удалось отвязать аккаунт.");
+  }
+};
+
+window.toggleNewsSub = async function (checked) {
+  try {
+    if (checked) {
+      await window.api.post("/news/subscribe");
+    } else {
+      await window.api.delete("/news/subscribe");
+    }
+  } catch (e) {
+    const msg = e.response?.data?.detail || "Ошибка изменения подписки";
+    alert(msg);
+    // откатить тогл
+    const toggle = document.getElementById("news-sub-toggle");
+    if (toggle) toggle.checked = !checked;
+  }
+};
+
+window.copyCommand = function (btn) {
+  const text = document.getElementById("tg-link-command").textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = "Скопировано!";
+    setTimeout(() => (btn.textContent = "Копировать"), 2000);
+  });
+};
+
 // ================= ЗАПУСК ВСЕГО ПРИ ЗАГРУЗКЕ СТРАНИЦЫ =================
 document.addEventListener("DOMContentLoaded", async () => {
   // Сначала загружаем данные пользователя
@@ -153,4 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initAvatar();
   initProgressBars();
   initEditButton();
+
+  // Telegram статус
+  await loadTelegramStatus();
 });

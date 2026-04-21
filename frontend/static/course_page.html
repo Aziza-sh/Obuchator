@@ -3,248 +3,348 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Obuchator</title>
+    <title>Курс | Обучатор</title>
     <link rel="stylesheet" href="styles/course_page.css" />
     <link rel="stylesheet" href="styles/main_page.css" />
-    <svg style="display: none">
-      <symbol id="profile-icon" viewBox="0 0 24 24">
-        <path
-          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-        />
-      </symbol>
-      <symbol id="time-icon" viewBox="0 0 24 24">
-        <path
-          d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"
-        />
-      </symbol>
-      <symbol id="difficulty-icon" viewBox="0 0 24 24">
-        <path d="M12 2L2 22h20L12 2zm0 3l7 14H5l7-14z" />
-      </symbol>
-      <symbol id="prev-icon" viewBox="0 0 24 24">
-        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
-      </symbol>
-      <symbol id="next-icon" viewBox="0 0 24 24">
-        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
-      </symbol>
-    </svg>
+    <style>
+      .course-subscribe-bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: var(--panel-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 24px;
+      }
+      .course-subscribe-bar p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 14px;
+        flex: 1;
+      }
+      .btn-subscribe {
+        padding: 10px 20px;
+        border: 2px solid var(--accent);
+        background: none;
+        color: var(--accent);
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+      .btn-subscribe.subscribed {
+        background: var(--accent);
+        color: #fff;
+      }
+      .materials-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .material-item {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 16px 20px;
+      }
+      .material-item h4 {
+        margin: 0 0 6px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .material-item p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 14px;
+      }
+      .material-type-badge {
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 20px;
+        font-weight: 600;
+      }
+      .badge-material { background: rgba(28,236,212,0.15); color: #0f6b64; }
+      .badge-homework { background: rgba(255,107,107,0.15); color: #c0392b; }
+      .material-date { font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+    </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="header-container">
-        <div class="logo">
-          <h1>Obuchator</h1>
-        </div>
-
-        <!-- Поиск -->
+        <div class="logo"><h1>Obuchator</h1></div>
         <div class="center-search">
-          <input
-            type="text"
-            class="search-center-input"
-            placeholder="Поиск по сайту..."
-            aria-label="Поиск"
-          />
+          <input type="text" class="search-center-input" placeholder="Поиск по сайту..." aria-label="Поиск" />
           <button class="search-center-button" type="button" aria-label="Найти">
-            <svg
-              class="search-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="18"
-              height="18"
-            >
-              <path
-                fill="currentColor"
-                d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-              />
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
+              <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
             </svg>
           </button>
         </div>
-        <button
-          id="theme-toggle"
-          class="theme-toggle"
-          aria-label="Переключить тему"
-        >
-          🌙
-        </button>
-        <!-- Иконка профиля -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">🌙</button>
         <div class="header-right">
           <div class="profile-menu">
-            <button
-              class="profile-button"
-              aria-label="Профиль пользователя"
-              onclick="location.href='profile_page.html'"
-            >
+            <button class="profile-button" aria-label="Профиль" onclick="location.href='profile_page.html'">
               <p>Профиль</p>
-              <svg
-                class="profile-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                />
+              <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
               </svg>
             </button>
-
             <button id="logout-btn" class="action-btn logout-btn">Выйти</button>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Основной контейнер -->
     <div class="site-container">
-      <!-- Левая панель -->
       <aside class="left-panel">
-        <div class="panel-title">Мой прогресс</div>
-        <p>progress...</p>
-        <div class="back-to-courses">
-          <a href="main_page.html" class="back-btn"> Вернуться к курсам </a>
+        <div class="panel-title">📚 Материалы курса</div>
+        <ul id="materials-sidebar" style="list-style:none;padding:0;margin:0;"></ul>
+        <div class="back-to-courses" style="margin-top:16px;">
+          <a href="courses_list.html" class="back-btn">← К списку курсов</a>
         </div>
       </aside>
 
-      <!-- Правая часть  -->
       <main class="right-content">
         <div class="course-content">
-          <div class="course-header">
-            <h2>Основы веб-разработки: Урок 9</h2>
-            <p>Создание адаптивного дизайна с CSS Grid и Flexbox</p>
-            <div class="course-meta">
-              <div class="course-meta-item">
-                <svg width="16" height="16" fill="#666">
-                  <use xlink:href="#time-icon"></use>
-                </svg>
-                <span>Время изучения: 45 минут</span>
-              </div>
-            </div>
+          <!-- Шапка курса -->
+          <div class="course-header" id="course-header">
+            <h2 id="course-title">Загрузка...</h2>
+            <p id="course-description"></p>
           </div>
 
-          <article class="article-content">
-            <div class="article-section">
-              <h3>Введение в адаптивный дизайн</h3>
-              <p>
-                Адаптивный веб-дизайн — это подход к разработке веб-сайтов,
-                который обеспечивает оптимальное отображение на различных
-                устройствах и размерах экранов. Сегодня мы изучим две мощные
-                технологии CSS: Grid и Flexbox.
-              </p>
+          <!-- Блок подписки -->
+          <div class="course-subscribe-bar" id="subscribe-bar">
+            <p id="subscribe-hint">Подпишитесь, чтобы получать уведомления об обновлениях курса в Telegram</p>
+            <button class="btn-subscribe" id="sub-btn" onclick="toggleSubscription()">🔔 Подписаться</button>
+          </div>
 
-              <div class="info-box">
-                <strong>Важно:</strong> Адаптивный дизайн стал стандартом с
-                ростом использования мобильных устройств. Google учитывает
-                адаптивность при ранжировании сайтов.
-              </div>
+          <!-- Список материалов -->
+          <div id="materials-section">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <h3 style="color:var(--text-primary);margin:0;">Материалы и задания</h3>
+              <button id="add-material-btn" onclick="openAddMaterialModal()"
+                style="padding:8px 18px;background:linear-gradient(90deg,var(--gradient-start),var(--gradient-end));color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;">
+                + Добавить
+              </button>
             </div>
-
-            <div class="article-section">
-              <h3>CSS Grid Layout</h3>
-              <p>
-                CSS Grid — это двумерная система разметки, которая позволяет
-                создавать сложные макеты с строками и столбцами. Рассмотрим
-                базовый пример:
-              </p>
-
-              <div class="code-block">
-                <code>
-                  <span class="code-comment"
-                    >/* Создание grid-контейнера */</span
-                  ><br />
-                  .container {<br />
-                  &nbsp;&nbsp;display: grid;<br />
-                  &nbsp;&nbsp;grid-template-columns: repeat(3, 1fr);<br />
-                  &nbsp;&nbsp;grid-gap: 20px;<br />
-                  }<br /><br />
-
-                  <span class="code-comment"
-                    >/* Адаптивность для мобильных */</span
-                  ><br />
-                  @media (max-width: 768px) {<br />
-                  &nbsp;&nbsp;.container {<br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr;<br />
-                  &nbsp;&nbsp;}<br />
-                  }
-                </code>
-              </div>
+            <div class="materials-list" id="materials-list">
+              <p style="color:var(--text-secondary);">Загрузка материалов...</p>
             </div>
-
-            <div class="article-section">
-              <h3>CSS Flexbox</h3>
-              <p>
-                Flexbox — это одномерная модель разметки, которая позволяет
-                распределять пространство между элементами в контейнере.
-                Идеально подходит для компонентов интерфейса:
-              </p>
-
-              <div class="code-block">
-                <code>
-                  <span class="code-comment">/* Flexbox навигация */</span
-                  ><br />
-                  .navbar {<br />
-                  &nbsp;&nbsp;display: flex;<br />
-                  &nbsp;&nbsp;justify-content: space-between;<br />
-                  &nbsp;&nbsp;align-items: center;<br />
-                  &nbsp;&nbsp;flex-wrap: wrap;<br />
-                  }<br /><br />
-
-                  .nav-item {<br />
-                  &nbsp;&nbsp;flex: 1;<br />
-                  &nbsp;&nbsp;min-width: 100px;<br />
-                  &nbsp;&nbsp;text-align: center;<br />
-                  }
-                </code>
-              </div>
-            </div>
-
-            <div class="article-section">
-              <h3>Комбинирование Grid и Flexbox</h3>
-              <p>
-                Для создания сложных адаптивных макетов часто используется
-                комбинация Grid для общей структуры страницы и Flexbox для
-                отдельных компонентов.
-              </p>
-              <p><strong>Преимущества такого подхода:</strong></p>
-              <p>1. Grid идеально подходит для макета всей страницы</p>
-              <p>
-                2. Flexbox отлично справляется с выравниванием элементов внутри
-                ячеек
-              </p>
-              <p>3. Упрощается создание адаптивных интерфейсов</p>
-            </div>
-          </article>
-
-          <div class="article-navigation">
-            <button class="nav-btn prev">
-              <svg width="20" height="20" fill="white">
-                <use xlink:href="#prev-icon"></use>
-              </svg>
-              Предыдущий урок
-            </button>
-            <button class="nav-btn next">
-              Следующий урок
-              <svg width="20" height="20" fill="white">
-                <use xlink:href="#next-icon"></use>
-              </svg>
-            </button>
           </div>
         </div>
       </main>
     </div>
 
-    <footer>
-      <p>© ИТС</p>
-    </footer>
+    <footer><p>© ИТС</p></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      let courseId = null;
+      let isSubscribed = false;
+      let tgLinked = false;
+
+      function getCourseIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("id");
+      }
+
+      function escHtml(str) {
+        if (!str) return "";
+        return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      }
+
+      function renderMaterials(materials) {
+        const list = document.getElementById("materials-list");
+        const sidebar = document.getElementById("materials-sidebar");
+
+        if (!materials || !materials.length) {
+          list.innerHTML = "<p style='color:var(--text-secondary);'>Материалов пока нет</p>";
+          return;
+        }
+
+        list.innerHTML = "";
+        sidebar.innerHTML = "";
+
+        materials.forEach((m, i) => {
+          const typeLabel = m.material_type === "homework" ? "Домашнее задание" : "Материал";
+          const badgeClass = m.material_type === "homework" ? "badge-homework" : "badge-material";
+          const icon = m.material_type === "homework" ? "📝" : "📖";
+          const date = new Date(m.created_at).toLocaleDateString("ru-RU");
+
+          // Основной список
+          const item = document.createElement("div");
+          item.className = "material-item";
+          item.innerHTML = `
+            <h4>
+              ${icon} ${escHtml(m.title)}
+              <span class="material-type-badge ${badgeClass}">${typeLabel}</span>
+            </h4>
+            <p>${escHtml(m.description)}</p>
+            <div class="material-date">Добавлено: ${date}</div>
+          `;
+          list.appendChild(item);
+
+          // Сайдбар
+          const li = document.createElement("li");
+          li.style.cssText = "padding:8px 0;border-bottom:1px solid var(--panel-border);font-size:13px;color:var(--text-secondary);";
+          li.innerHTML = `${icon} ${escHtml(m.title)}`;
+          sidebar.appendChild(li);
+        });
+      }
+
+      async function loadCourse() {
+        courseId = getCourseIdFromUrl();
+        if (!courseId) {
+          document.getElementById("course-title").textContent = "Курс не найден";
+          document.getElementById("subscribe-bar").style.display = "none";
+          return;
+        }
+
+        try {
+          const [courseRes, tgRes] = await Promise.all([
+            API.get(`/courses/${courseId}`),
+            API.get("/api/v1/telegram/status"),
+          ]);
+
+          const course = courseRes.data;
+          tgLinked = tgRes.data.linked;
+          isSubscribed = course.is_subscribed;
+
+          document.title = `${course.name} | Обучатор`;
+          document.getElementById("course-title").textContent = course.name;
+          document.getElementById("course-description").textContent = course.description;
+
+          // Кнопка подписки
+          const subHint = document.getElementById("subscribe-hint");
+
+          if (!tgLinked) {
+            subHint.innerHTML = '💡 Подпишитесь на курс. Чтобы получать уведомления в Telegram — <a href="profile_page.html" style="color:var(--accent)">привяжите аккаунт</a> в профиле';
+          }
+
+          updateSubButton();
+
+          renderMaterials(course.materials);
+        } catch (e) {
+          console.error(e);
+          document.getElementById("course-title").textContent = "Ошибка загрузки курса";
+        }
+      }
+
+      function updateSubButton() {
+        const btn = document.getElementById("sub-btn");
+        btn.style.display = "";
+        if (isSubscribed) {
+          btn.classList.add("subscribed");
+          btn.textContent = "🔔 Подписан";
+        } else {
+          btn.classList.remove("subscribed");
+          btn.textContent = "🔕 Подписаться";
+        }
+      }
+
+      async function toggleSubscription() {
+        if (!courseId) return;
+        const btn = document.getElementById("sub-btn");
+        btn.disabled = true;
+        try {
+          if (isSubscribed) {
+            await API.delete(`/courses/${courseId}/subscribe`);
+            isSubscribed = false;
+          } else {
+            await API.post(`/courses/${courseId}/subscribe`);
+            isSubscribed = true;
+          }
+          updateSubButton();
+        } catch (e) {
+          const detail = e.response?.data?.detail;
+          const msg = typeof detail === 'string'
+            ? detail
+            : (detail ? JSON.stringify(detail) : null)
+              || e.message
+              || "Ошибка изменения подписки";
+          console.error("subscribe error", e.response?.status, e.response?.data);
+          alert(msg);
+        } finally {
+          btn.disabled = false;
+        }
+      }
+
+      function openAddMaterialModal() {
+        const existing = document.getElementById("add-material-modal");
+        if (existing) { existing.style.display = "flex"; return; }
+
+        const modal = document.createElement("div");
+        modal.id = "add-material-modal";
+        modal.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;display:flex;align-items:center;justify-content:center;";
+        modal.innerHTML = `
+          <div style="background:var(--panel-bg);border-radius:16px;padding:32px;max-width:500px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+            <h3 style="margin:0 0 20px;color:var(--text-primary);">Добавить материал</h3>
+            <input id="am-title" placeholder="Название" style="width:100%;padding:10px 14px;border:1px solid var(--card-border);border-radius:8px;font-size:14px;margin-bottom:12px;box-sizing:border-box;background:var(--card-bg);color:var(--text-primary);" />
+            <textarea id="am-desc" placeholder="Описание или текст задания" rows="4" style="width:100%;padding:10px 14px;border:1px solid var(--card-border);border-radius:8px;font-size:14px;margin-bottom:12px;box-sizing:border-box;resize:vertical;background:var(--card-bg);color:var(--text-primary);"></textarea>
+            <select id="am-type" style="width:100%;padding:10px 14px;border:1px solid var(--card-border);border-radius:8px;font-size:14px;margin-bottom:20px;box-sizing:border-box;background:var(--card-bg);color:var(--text-primary);">
+              <option value="material">📖 Материал</option>
+              <option value="homework">📝 Домашнее задание</option>
+            </select>
+            <div style="display:flex;gap:12px;">
+              <button id="am-submit" style="flex:1;padding:10px;background:linear-gradient(90deg,var(--gradient-start),var(--gradient-end));color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;">Опубликовать</button>
+              <button onclick="document.getElementById('add-material-modal').style.display='none'" style="flex:1;padding:10px;border:1px solid var(--card-border);border-radius:8px;background:none;cursor:pointer;color:var(--text-secondary);">Отмена</button>
+            </div>
+            <p id="am-error" style="color:#ff6b6b;font-size:13px;margin-top:12px;display:none;"></p>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById("am-submit").onclick = async () => {
+          const title = document.getElementById("am-title").value.trim();
+          const description = document.getElementById("am-desc").value.trim();
+          const material_type = document.getElementById("am-type").value;
+          const err = document.getElementById("am-error");
+
+          if (!title) { err.textContent = "Введите название"; err.style.display = "block"; return; }
+
+          try {
+            document.getElementById("am-submit").disabled = true;
+            await API.post(`/courses/${courseId}/materials`, { title, description, material_type });
+            modal.style.display = "none";
+            // перезагрузить курс чтобы показать новый материал
+            const courseRes = await API.get(`/courses/${courseId}`);
+            renderMaterials(courseRes.data.materials);
+          } catch (e) {
+            err.textContent = e.response?.data?.detail || "Ошибка добавления материала";
+            err.style.display = "block";
+            document.getElementById("am-submit").disabled = false;
+          }
+        };
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!localStorage.getItem("access_token")) {
+          window.location.href = "login_page.html";
+          return;
+        }
+
+        const saved = localStorage.getItem("theme");
+        if (saved === "dark") document.body.classList.add("dark-theme");
+        const toggle = document.getElementById("theme-toggle");
+        if (toggle) {
+          toggle.textContent = document.body.classList.contains("dark-theme") ? "☀️" : "🌙";
+          toggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-theme");
+            const dark = document.body.classList.contains("dark-theme");
+            localStorage.setItem("theme", dark ? "dark" : "light");
+            toggle.textContent = dark ? "☀️" : "🌙";
+          });
+        }
+        loadCourse();
+      });
+    </script>
   </body>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/tabs.js"></script>
-  <script src="js/websocket.js"></script>
-  <script src="js/courses.js"></script>
-  <script src="js/news.js"></script>
-  <script src="js/add_news.js"></script>
-  <script src="js/main.js"></script>
 </html>

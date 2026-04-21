@@ -32,7 +32,7 @@ API.interceptors.response.use(
 
       try {
         const res = await API.post(
-          `${API_URL}/api/v1/auth/token`,
+          `/api/v1/auth/token`,
           new URLSearchParams({
             grant_type: "refresh_token",
             refresh_token: refresh,
@@ -47,7 +47,7 @@ API.interceptors.response.use(
 
         original.headers.Authorization = `Bearer ${res.data.access_token}`;
 
-        return api(original);
+        return API(original);
       } catch {
         localStorage.clear();
         window.location.href = "login_page.html";

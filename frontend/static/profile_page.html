@@ -190,15 +190,62 @@
         </div>
       </div>
 
+      <!-- Telegram секция -->
+      <div class="section-card" id="telegram-section">
+        <h2 class="section-title">Telegram уведомления</h2>
+
+        <div id="tg-not-linked" style="display:block">
+          <p style="color:var(--text-secondary);margin-bottom:16px;">
+            Привяжите Telegram-аккаунт, чтобы получать уведомления о новостях и курсах прямо в мессенджере.
+          </p>
+          <button class="edit-btn" id="tg-link-btn" onclick="linkTelegram()">
+            🔗 Привязать Telegram
+          </button>
+        </div>
+
+        <div id="tg-linked" style="display:none">
+          <p style="color:#1cecd4;font-weight:600;margin-bottom:16px;">
+            ✅ Telegram привязан
+          </p>
+
+          <div class="settings-option">
+            <span class="settings-label">📰 Уведомления о новостях</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="news-sub-toggle" onchange="toggleNewsSub(this.checked)" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <button class="edit-btn" style="margin-top:16px;background:linear-gradient(90deg,#ff6b6b,#ff8e53);"
+            onclick="unlinkTelegram()">
+            🔌 Отвязать Telegram
+          </button>
+        </div>
+      </div>
+
+      <!-- Модальное окно с инструкцией привязки -->
+      <div id="tg-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:1000;align-items:center;justify-content:center;">
+        <div style="background:var(--panel-bg);border-radius:16px;padding:32px;max-width:480px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+          <h3 style="margin:0 0 16px;color:var(--text-primary);">Привязка Telegram</h3>
+          <ol style="padding-left:20px;line-height:2;color:var(--text-secondary);">
+            <li>Откройте Telegram</li>
+            <li>Найдите бота <strong id="tg-bot-name">@FinChessbot</strong></li>
+            <li>Отправьте команду:</li>
+          </ol>
+          <div style="background:#f4f4f4;border-radius:8px;padding:12px 16px;margin:12px 0;font-family:monospace;font-size:14px;word-break:break-all;position:relative;">
+            <span id="tg-link-command">/start ...</span>
+            <button onclick="copyCommand(this)" style="position:absolute;right:8px;top:8px;background:var(--accent);border:none;border-radius:6px;color:#fff;padding:4px 10px;cursor:pointer;font-size:12px;">Копировать</button>
+          </div>
+          <p id="tg-token-expire" style="color:var(--text-secondary);font-size:13px;margin-bottom:20px;">Ссылка действительна 10 минут</p>
+          <div style="display:flex;gap:12px;">
+            <button class="edit-btn" onclick="closeTgModal()" style="flex:1;">Готово — проверить</button>
+            <button onclick="document.getElementById('tg-modal').style.display='none'" style="flex:1;padding:10px;border:1px solid #ddd;border-radius:8px;background:none;cursor:pointer;color:var(--text-secondary);">Отмена</button>
+          </div>
+        </div>
+      </div>
+
       <div class="section-card">
         <h2 class="section-title">Настройки</h2>
-        <div class="settings-option">
-          <span class="settings-label">Уведомления по email</span>
-          <label class="toggle-switch">
-            <input type="checkbox" checked />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
         <div class="settings-option">
           <span class="settings-label">Темная тема</span>
           <label class="toggle-switch">
@@ -213,13 +260,6 @@
             <span class="toggle-slider"></span>
           </label>
         </div>
-        <div class="settings-option">
-          <span class="settings-label">Звуковые эффекты</span>
-          <label class="toggle-switch">
-            <input type="checkbox" checked />
-            <span class="toggle-slider"></span>
-          </label>
-        </div>
       </div>
     </div>
 
@@ -228,6 +268,8 @@
     </footer>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/api.js"></script>
   <script src="js/reg_log.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/profile.js"></script>
 </html>

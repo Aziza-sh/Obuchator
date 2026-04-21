@@ -4,3 +4,6 @@ from .news.news_like import NewsLike
 from .news.news_sub import NewsSubscription
 from .news.news_view import NewsView
 from .users import User
+from .courses.course import Course
+from .courses.course_material import CourseMaterial
+from .courses.course_subscription import CourseSubscription
