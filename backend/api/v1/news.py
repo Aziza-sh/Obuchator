@@ -50,6 +50,8 @@ async def create_news_endpoint(
         "author": news.author,
         "likes_count": 0,
         "is_liked": False,
+        "likes_count": 0,
+        "views_count": 0, 
     }
 
 
